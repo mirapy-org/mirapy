@@ -5,9 +5,13 @@ Python package for Machine Learning in Astronomy
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
 
-.. image:: https://travis-ci.com/swapsha96/MiraPy.svg?token=izqpMsWsVgW3nuqMM8oC&branch=master
+.. image:: https://travis-ci.com/swapsha96/MiraPy.svg?token=izqpMsWsVgW3nuqMM8oC&branch=master&style=flat
     :target: https://travis-ci.com/swapsha96/MiraPy
     :alt: Travis CI Status
+
+.. image:: http://img.shields.io/badge/license-BSD-blue.svg?style=flat
+        :target: https://github.com/astroml/astroml/blob/master/LICENSE
+        :alt: LICENSE
 
 MiraPy is a Python package for Machine Learning in Astronomy. It is built using
 Keras for developing Deep Learning models to run on CPU and GPU seamlessly. The
