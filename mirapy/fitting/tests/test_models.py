@@ -2,7 +2,7 @@ from mirapy.fitting.models import Gaussian1D
 import pytest
 
 
-def test_Gaussian1D_error():
+def test_gaussian1d_error():
     model = Gaussian1D()
 
     with pytest.raises(ValueError):
