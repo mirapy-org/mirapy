@@ -7,7 +7,7 @@ Python package for Machine Learning in Astronomy
 
 .. image:: https://travis-ci.com/swapsha96/MiraPy.svg?token=izqpMsWsVgW3nuqMM8oC&branch=master&style=flat
     :target: https://travis-ci.com/mirapy-org/MiraPy
-    :alt: Travis CI Status
+    :alt: Travis CI
 
 .. image:: http://img.shields.io/badge/license-BSD-blue.svg?style=flat
         :target: https://github.com/mirapy-org/MiraPy/blob/master/licenses/LICENSE.rst
