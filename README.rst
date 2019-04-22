@@ -5,7 +5,7 @@ Python package for Machine Learning in Astronomy
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
 
-.. image:: https://travis-ci.com/swapsha96/MiraPy.svg?token=izqpMsWsVgW3nuqMM8oC&branch=master&style=flat
+.. image:: https://travis-ci.com/mirapy-org/MiraPy.svg?branch=master
     :target: https://travis-ci.com/mirapy-org/MiraPy
     :alt: Travis CI
 
