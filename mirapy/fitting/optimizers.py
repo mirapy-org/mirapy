@@ -3,14 +3,16 @@ from autograd import grad
 from copy import deepcopy
 
 
-class ParameterEstimation():
+class ParameterEstimation:
     def __init__(self, x, y, model, loss_function, callback=None):
         self.x = x
         self.y = y
+        self.init_model = deepcopy(model)
         self.model = deepcopy(model)
         self.p_init = model.get_params_as_array()
         self.loss_function = loss_function
         self.callback = callback
+        self.results = None
 
     def regression_function(self, params):
         self.model.set_params_from_array(params)
@@ -18,7 +20,14 @@ class ParameterEstimation():
         y_pred = self.model(self.x)
         return self.loss_function(y_true, y_pred)
 
+    def get_model(self):
+        model = deepcopy(self.init_model)
+        if self.results is not None:
+            model.set_params_from_array(self.results.x)
+        return model
+
     def fit(self):
         results = minimize(self.regression_function, self.p_init, method='L-BFGS-B',
                            jac=grad(self.regression_function), callback=self.callback)
+        self.results = results
         return results
