@@ -1,4 +1,4 @@
-from mirapy.fitting.models import Gaussian1D
+from mirapy.fitting import Gaussian1D
 import pytest
 
 

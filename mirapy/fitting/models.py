@@ -14,6 +14,9 @@ class Model1D:
     def set_params_from_array(self, params):
         return
 
+    def get_params_as_array(self):
+        return
+
 
 class Gaussian1D(Model1D):
     """
@@ -62,3 +65,6 @@ class Gaussian1D(Model1D):
         self.amplitude = params[0]
         self.mean = params[1]
         self.stddev = params[2]
+
+    def get_params_as_array(self):
+        return np.array([self.amplitude, self.mean, self.stddev])
