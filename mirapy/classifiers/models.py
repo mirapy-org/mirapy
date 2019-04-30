@@ -2,11 +2,9 @@ import numpy as np
 import os
 import warnings
 warnings.filterwarnings('ignore')
-
 from keras.models import load_model, Model
 from keras.layers import Input, Dense, Activation
 from keras.optimizers import Adam
-import keras.backend as K
 
 
 class Classifier:
@@ -27,10 +25,10 @@ class Classifier:
 class XRayBinaryClassifier(Classifier):
     """
     """
-    def __init__(self, activation = 'relu'):
-        self.activation = activation
+    def __init__(self):
+        pass
 
-    def build_model(self):
+    def build_model(self, activation='relu', optimizer=Adam(lr=0.0001, decay=1e-6)):
         """
         build model pre-worked
         """
@@ -39,9 +37,7 @@ class XRayBinaryClassifier(Classifier):
         x = Dense(32, activation = self.activation)(x)
         x = Dense(16, activation = self.activation)(x)
         y = Dense(3, activation='softmax')(x)
-        model = Model(input_x, y)
-        optimizer = Adam(lr=0.0001, decay=1e-6)
-        self.model = model
+        self.model = Model(input_x, y)
         self.optimizer = optimizer
         
     def save_model(self, model_name='xrb_model.h5'):
