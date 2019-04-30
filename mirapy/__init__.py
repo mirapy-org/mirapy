@@ -23,4 +23,3 @@ if not _ASTROPY_SETUP_:
     from .example_mod import *
     from mirapy.fitting import *
     from mirapy.autoencoder import *
-
