@@ -14,4 +14,3 @@ class Autoencoder:
 
     def get_decoded_image(self, encoded_img):
         return
-
