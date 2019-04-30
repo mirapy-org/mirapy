@@ -1,7 +1,7 @@
 import os
 import warnings
 from keras.models import load_model, Model
-from keras.layers import Input, Dense, Activation
+from keras.layers import Input, Dense
 from keras.optimizers import Adam
 warnings.filterwarnings('ignore')
 
@@ -12,7 +12,7 @@ class Classifier:
         self.optimizer = None
         self.activation = None
 
-    def build_model(self, activation, optimizer):
+    def compile_model(self, activation, optimizer, loss):
         pass
 
     def save_model(self, model_name, path):
@@ -25,8 +25,8 @@ class Classifier:
 class XRayBinaryClassifier(Classifier):
     """
     """
-    def build_model(self, activation='relu',
-                    optimizer=Adam(lr=0.0001, decay=1e-6)):
+    def compile_model(self, activation='relu',
+                      optimizer=Adam(lr=0.0001, decay=1e-6), loss='mean_squared_error'):
         """
         build model pre-worked
         """
@@ -38,6 +38,7 @@ class XRayBinaryClassifier(Classifier):
         y = Dense(3, activation='softmax')(x)
         self.model = Model(input_x, y)
         self.optimizer = optimizer
+        self.model.compile(self.optimizer, loss, metrics=['accuracy'])
         
     def save_model(self,  model_name='xrb_model.h5', path='./models'):
         """
