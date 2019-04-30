@@ -1,59 +1,58 @@
-import numpy as np
 import os
 import warnings
-warnings.filterwarnings('ignore')
 from keras.models import load_model, Model
 from keras.layers import Input, Dense, Activation
 from keras.optimizers import Adam
+warnings.filterwarnings('ignore')
 
 
 class Classifier:
     def __init__(self):
         self.model = None
         self.optimizer = None
+        self.activation = None
 
-    def build_model(self, x):
+    def build_model(self, activation, optimizer):
         pass
 
-    def save_model(self, params):
+    def save_model(self, model_name, path):
         pass
 
-    def load_model(self):
+    def load_model(self, model_name, path):
         pass
 
 
 class XRayBinaryClassifier(Classifier):
     """
     """
-    def __init__(self):
-        pass
-
-    def build_model(self, activation='relu', optimizer=Adam(lr=0.0001, decay=1e-6)):
+    def build_model(self, activation='relu',
+                    optimizer=Adam(lr=0.0001, decay=1e-6)):
         """
         build model pre-worked
         """
+        self.activation = activation
         input_x = Input(shape=(3, 1))
-        x = Dense(32, activation = self.activation)(input_x)
-        x = Dense(32, activation = self.activation)(x)
-        x = Dense(16, activation = self.activation)(x)
+        x = Dense(32, activation=self.activation)(input_x)
+        x = Dense(32, activation=self.activation)(x)
+        x = Dense(16, activation=self.activation)(x)
         y = Dense(3, activation='softmax')(x)
         self.model = Model(input_x, y)
         self.optimizer = optimizer
         
-    def save_model(self, model_name='xrb_model.h5'):
+    def save_model(self,  model_name='xrb_model.h5', path='./models'):
         """
         save model
         """
-        path = 'models/' + model_name 
+        path = path + '/' + model_name
         self.model.save(path)
 
-    def load_model(self, model_name):
+    def load_model(self, model_name, path='./models'):
         """
         load saved model
         """
-        path = 'models/' + model_name 
+        path = path + '/' + model_name
         if os.path.exists(path):
             self.model = load_model(path)
         else:
             raise FileNotFoundError("Model does not exists")
-        
+
