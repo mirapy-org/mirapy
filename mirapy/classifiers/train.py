@@ -27,8 +27,11 @@ parser.add_argument('--learning_rate', type=float, default=0.001,
 
 args = parser.parse_args()
 
-# if not os.path.isdir(args.save_dir):
-#     raise OSError('Directory'+str(args.save_dir)+'does not exist.')
+if not os.path.isdir(args.save_dir):
+    raise OSError('Directory'+str(args.save_dir)+'does not exist.')
+
+if not os.path.isdir(args.data_directory):
+    raise OSError('Directory'+str(args.data_directory)+'does not exist.')
 
 
 def train(model, x_train, y_train):
