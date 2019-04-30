@@ -1,8 +1,7 @@
 import os
-import warnings
 from keras.models import load_model, Model
 from keras.layers import Input, Dense
-from keras.optimizers import Adam
+import warnings
 warnings.filterwarnings('ignore')
 
 
@@ -12,21 +11,23 @@ class Classifier:
         self.optimizer = None
         self.activation = None
 
-    def compile_model(self, activation, optimizer, loss):
+    def build_model(self, x):
         pass
 
-    def save_model(self, model_name, path):
+    def save_model(self, params):
         pass
 
-    def load_model(self, model_name, path):
+    def load_model(self):
         pass
 
 
 class XRayBinaryClassifier(Classifier):
     """
     """
-    def compile_model(self, activation='relu',
-                      optimizer=Adam(lr=0.0001, decay=1e-6), loss='mean_squared_error'):
+    def __init__(self):
+        pass
+
+    def compile_model(self, activation, optimizer):
         """
         build model pre-worked
         """
@@ -38,20 +39,19 @@ class XRayBinaryClassifier(Classifier):
         y = Dense(3, activation='softmax')(x)
         self.model = Model(input_x, y)
         self.optimizer = optimizer
-        self.model.compile(self.optimizer, loss, metrics=['accuracy'])
         
-    def save_model(self,  model_name='xrb_model.h5', path='./models'):
+    def save_model(self, path, model_name):
         """
         save model
         """
-        path = path + '/' + model_name
+        path = 'models/' + model_name 
         self.model.save(path)
 
-    def load_model(self, model_name, path='./models'):
+    def load_model(self, path, model_name):
         """
         load saved model
         """
-        path = path + '/' + model_name
+        path = 'models/' + model_name
         if os.path.exists(path):
             self.model = load_model(path)
         else:
