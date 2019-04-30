@@ -1,79 +1,63 @@
-import autograd.numpy as np
+import numpy as np
+import os
+import warnings
+warnings.filterwarnings('ignore')
+
+from keras.models import load_model, Model
+from keras.layers import Input, Dense, Activation
+from keras.optimizers import Adam
+import keras.backend as K
 
 
-class classifier:
+class Classifier:
     def __init__(self):
-        return
+        self.model = None
+        self.optimizer = None
 
     def build_model(self, x):
-        return
+        pass
 
     def save_model(self, params):
-        return
+        pass
 
     def load_model(self):
-        return
+        pass
 
 
-class XrayBinary(classifier):
+class XRayBinaryClassifier(Classifier):
     """
-        One dimensional Gaussian model.
-        Parameters
-        ----------
-        amplitude : float
-            Amplitude of the Gaussian.
-        mean : float
-            Mean of the Gaussian.
-        stddev : float
-            Standard deviation of the Gaussian.
+    """
+    def __init__(self, activation = 'relu'):
+        self.activation = activation
+
+    def build_model(self):
         """
-
-    def __init__(self, amplitude=1., mean=0., stddev=1.):
-        self.amplitude = amplitude
-        self.mean = mean
-        self.stddev = stddev
-
-    def __call__(self, x):
-        return self.evaluate(x)
-
-    def evaluate(self, x):
+        build model pre-worked
         """
-        Gaussian1D model function.
-        Parameters
-        ----------
-        x : array
-            Input of the model.
-        Returns
-        -------
-        array : Output of the Gaussian function.
+        input_x = Input(shape=(3, 1))
+        x = Dense(32, activation = self.activation)(input_x)
+        x = Dense(32, activation = self.activation)(x)
+        x = Dense(16, activation = self.activation)(x)
+        y = Dense(3, activation='softmax')(x)
+        model = Model(input_x, y)
+        optimizer = Adam(lr=0.0001, decay=1e-6)
+        self.model = model
+        self.optimizer = optimizer
+        
+    def save_model(self, model_name='xrb_model.h5'):
         """
-        return self.amplitude * np.exp(-0.5 * (x - self.mean) ** 2 / self.stddev ** 2)
-
-    def set_params_from_array(self, params):
+        save model
         """
-        Sets the parameters of the model from an array.
+        path = 'models/' + model_name 
+        self.model.save(path)
+
+    def load_model(self, model_name):
         """
-        if len(params) != 3:
-            raise ValueError("The length of the parameter array must be 3")
-
-        self.amplitude = params[0]
-        self.mean = params[1]
-        self.stddev = params[2]
-
-    def get_params_as_array(self):
-        return np.array([self.amplitude, self.mean, self.stddev])
-
-    © 2019 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
+        load saved model
+        """
+        path = 'models/' + model_name 
+        if os.path.exists(path):
+            self.model = load_model(path)
+        else:
+            raise FileNotFoundError("Model does not exists")
+        
