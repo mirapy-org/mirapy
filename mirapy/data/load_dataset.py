@@ -19,10 +19,8 @@ def load_messier_catalog_images(path, img_size=None, disable_tqdm=False):
     return np.array(images)
 
 
-def prepare_messier_catalog_images(images, psf, sigma, normalize=True):
-    if normalize:
-        images = np.array(images).astype('float32') / 255.
-
-    x_conv2d = [convolve2d(I, psf, 'same') for I in tqdm(images)]
-    x_conv2d_noisy = [I + sigma * np.random.poisson(I) for I in tqdm(x_conv2d)]
-    return np.array(x_conv2d_noisy)
+def prepare_messier_catalog_images(images, psf, sigma):
+    images = np.array(images).astype('float32') / 255.
+    x_conv2d = [convolve2d(I, psf, 'same') for I in images]
+    x_conv2d_noisy = [I + sigma * np.random.poisson(I) for I in x_conv2d]
+    return images, x_conv2d_noisy

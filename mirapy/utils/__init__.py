@@ -36,7 +36,6 @@ def image_augmentation(images, image_data_generator, num_of_augumentations,
 
 def psnr(x, y):
     mse = np.mean((x - y) ** 2)
-    print(mse)
     return -10 * np.log10(mse)
 
 
