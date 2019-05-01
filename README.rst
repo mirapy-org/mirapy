@@ -1,6 +1,10 @@
 Python package for Machine Learning in Astronomy
 ------------------------------------------------
 
+.. image:: https://api.codacy.com/project/badge/Grade/5bbcdadaebb84afd9ff746f56f7b3d10
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/app/swapsha96/MiraPy?utm_source=github.com&utm_medium=referral&utm_content=mirapy-org/MiraPy&utm_campaign=Badge_Grade_Dashboard
+
 .. image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat-square
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
