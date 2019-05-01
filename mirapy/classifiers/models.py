@@ -27,7 +27,7 @@ class XRayBinaryClassifier(Classifier):
     def __init__(self):
         pass
 
-    def compile_model(self, activation, optimizer):
+    def compile(self, activation, optimizer):
         """
         build model pre-worked
         """
@@ -39,7 +39,8 @@ class XRayBinaryClassifier(Classifier):
         y = Dense(3, activation='softmax')(x)
         self.model = Model(input_x, y)
         self.optimizer = optimizer
-        self.model.compile(self.optimizer, loss='mean_squared_error', metrics=['accuracy'])
+        self.model.compile(self.optimizer,
+                           loss='mean_squared_error', metrics=['accuracy'])
 
     def save_model(self, path, model_name):
         """

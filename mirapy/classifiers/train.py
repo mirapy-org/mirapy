@@ -26,6 +26,8 @@ parser.add_argument('--validation_split', type=float, default=0.1,
                     help='validation-data split')
 parser.add_argument('--test_split', type=float, default=0.2,
                     help='test-data split(float)')
+parser.add_argument('--standard_scaler', type=bool, default=True,
+                    help='Standardize data using StandardScaler')
 
 args = parser.parse_args()
 
@@ -42,13 +44,14 @@ if args.test_split >= 1 or args.test_split <= 0:
 def train(model):
     if not type(x_train) == np.ndarray and type(y_train) == np.ndarray:
         raise ValueError('Input array should be numpy arrays')
-    history = model.fit(x_train, y_train, epochs=args.num_epochs, shuffle=True, batch_size=args.batch_size,
+    history = model.fit(x_train, y_train, epochs=args.num_epochs,
+                        shuffle=True, batch_size=args.batch_size,
                         validation_split=args.validation_split)
 
 
 if __name__ == '__main__':
-    x_train, y_train, _, _ = load_data(args.data_directory, args.test_split)
+    x_train, y_train, _, _ = load_data(args.data_directory, args.test_split, args.standard_scaler)
     xrb = XRayBinaryClassifier()
-    xrb.compile_model(args.activation, args.optimizer)
+    xrb.compile(args.activation, args.optimizer)
     train(xrb.model)
     xrb.save_model(args.save_dir, args.model_name)
