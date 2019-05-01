@@ -1,5 +1,5 @@
-Python package for Machine Learning in Astronomy
-------------------------------------------------
+MiraPy: Python Package for Machine Learning in Astronomy
+--------------------------------------------------------
 
 .. image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat-square
     :target: http://www.astropy.org
@@ -13,7 +13,7 @@ Python package for Machine Learning in Astronomy
     :target: https://travis-ci.com/mirapy-org/MiraPy
     :alt: Travis CI
 
-.. image:: https://img.shields.io/badge/chat-on%20slack-49C39E.svg?style=flat-square
+.. image:: https://img.shields.io/badge/chat-on%20Slack-E51670.svg?style=flat-square
     :target: https://join.slack.com/t/mirapy/shared_invite/enQtNjEyNDQwNTI2NDY3LTE3ZmI3M2EyMjdkZWU4NTE2NjkxZjdhYWE4ZjUyODY0NzllNzRlMzZhNThhNWRiMjk4MjNhYWQ3NjA3YjJiNGY
     :alt: Slack
 
