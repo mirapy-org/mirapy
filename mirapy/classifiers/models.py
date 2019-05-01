@@ -32,13 +32,14 @@ class XRayBinaryClassifier(Classifier):
         build model pre-worked
         """
         self.activation = activation
-        input_x = Input(shape=(3, 1))
+        input_x = Input(shape=(3, ))
         x = Dense(32, activation=self.activation)(input_x)
         x = Dense(32, activation=self.activation)(x)
         x = Dense(16, activation=self.activation)(x)
         y = Dense(3, activation='softmax')(x)
         self.model = Model(input_x, y)
         self.optimizer = optimizer
+        self.model.compile(self.optimizer, loss='mean_squared_error', metrics=['accuracy'])
         
     def save_model(self, path, model_name):
         """
