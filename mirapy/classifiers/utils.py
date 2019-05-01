@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from keras.utils.np_utils import to_categorical
 
+
 def load_data(data_directory, test_split):
     asc_files = [os.path.join(dp, f) for dp, dn, filenames in os.walk(data_directory)
                  for f in filenames if os.path.splitext(f)[1] == '.asc']
