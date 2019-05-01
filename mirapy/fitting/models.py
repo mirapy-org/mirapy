@@ -3,19 +3,19 @@ import autograd.numpy as np
 
 class Model1D:
     def __init__(self):
-        return
+        pass
 
     def __call__(self, x):
         return self.evaluate(x)
 
     def evaluate(self, x):
-        return
+        pass
 
     def set_params_from_array(self, params):
-        return
+        pass
 
     def get_params_as_array(self):
-        return
+        pass
 
 
 class Gaussian1D(Model1D):

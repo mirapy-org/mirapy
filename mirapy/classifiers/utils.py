@@ -28,7 +28,7 @@ def load_data(data_directory, test_split, standard_scaler):
     nonpulsar_keys = ['ScoX-1 Zsource', 'GX9+1 Atoll', 'GX17+2 Zsource',
                       'CygX-2 Zsource', 'GX9+9 Atoll', 'GX349+2 Zsource']
 
-    for i in range(len(datapoints)):
+    for i, _ in enumerate(datapoints):
         system = datapoints[i][0]
         if system in bh_keys:
             datapoints[i][0] = '0'
