@@ -54,5 +54,6 @@ def load_data(data_directory, test_split, standard_scaler):
     x_train, x_test, y_train, y_test = \
         train_test_split(x, y, test_size=test_split, random_state=42)
 
-    y_cat = to_categorical(y_train)
-    return x_train, y_cat, x_test, y_test
+    y_cat_train = to_categorical(y_train)
+    y_cat_test = to_categorical(y_test)
+    return x_train, y_cat_train, x_test, y_cat_test
