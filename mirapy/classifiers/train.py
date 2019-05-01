@@ -50,7 +50,8 @@ def train(model):
 
 
 if __name__ == '__main__':
-    x_train, y_train, _, _ = load_data(args.data_directory, args.test_split, args.standard_scaler)
+    x_train, y_train, _, _ = load_data(args.data_directory, args.test_split,
+                                       args.standard_scaler)
     xrb = XRayBinaryClassifier()
     xrb.compile(args.activation, args.optimizer)
     train(xrb.model)
