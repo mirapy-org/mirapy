@@ -13,6 +13,9 @@ Python package for Machine Learning in Astronomy
         :target: https://github.com/mirapy-org/MiraPy/blob/master/LICENSE.rst
         :alt: LICENSE
 
+
+
+
 MiraPy is a Python package for Deep Learning in Astronomy. It is built using
 Keras for developing ML models to run on CPU and GPU seamlessly. The
 aim is to make applying machine learning techniques on astronomical data easy
