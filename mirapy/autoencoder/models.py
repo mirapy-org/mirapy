@@ -9,17 +9,18 @@ class Autoencoder:
         self.history = None
         self.dim = None
 
-    def compile(self):
+    def compile(self, optimizer, loss):
         pass
 
-    def train(self, input_train, input_test, batch_size, epochs):
+    def train(self, x, y, batch_size=32, epochs=100, validation_data=None,
+              shuffle=True, verbose=1):
         pass
 
-    def predict(self):
-        return
+    def predict(self, x):
+        pass
 
     def evaluate(self):
-        return
+        pass
 
     def plot_history(self):
         plt.plot(self.history.history['loss'])
