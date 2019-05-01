@@ -32,7 +32,7 @@ if sys.version_info < tuple((int(val) for val in __minimum_python_version__.spli
 
 # Import ah_bootstrap after the python version validation
 
-# import ah_bootstrap
+import ah_bootstrap
 from setuptools import setup
 
 import builtins
