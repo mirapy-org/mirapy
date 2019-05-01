@@ -40,12 +40,12 @@ class XRayBinaryClassifier(Classifier):
         self.model = Model(input_x, y)
         self.optimizer = optimizer
         self.model.compile(self.optimizer, loss='mean_squared_error', metrics=['accuracy'])
-        
+
     def save_model(self, path, model_name):
         """
         save model
         """
-        path = 'models/' + model_name 
+        path = 'models/' + model_name
         self.model.save(path)
 
     def load_model(self, path, model_name):
@@ -57,4 +57,3 @@ class XRayBinaryClassifier(Classifier):
             self.model = load_model(path)
         else:
             raise FileNotFoundError("Model does not exists")
-
