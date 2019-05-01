@@ -2,8 +2,8 @@ import os
 import argparse
 import numpy as np
 from keras.optimizers import Adam
-from models import *
-from utils import load_data
+from mirapy.classifiers.models import *
+from mirapy.classifiers.utils import load_data
 
 parser = argparse.ArgumentParser(
                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)

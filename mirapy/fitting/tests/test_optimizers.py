@@ -20,7 +20,6 @@ def test_parameter_estimation():
     # parameter estimation using MiraPy
     init_model = Gaussian1D(1., 1., 1.)
     parest = ParameterEstimation(x, y, init_model, mean_squared_error)
-    results = parest.fit()
     best_model = parest.get_model()
 
     # paramter estimation using Astropy

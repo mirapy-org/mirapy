@@ -5,15 +5,17 @@ Python package for Machine Learning in Astronomy
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
 
-.. image:: https://travis-ci.com/mirapy-org/MiraPy.svg?branch=master&style=flat-square
-    :target: https://travis-ci.com/mirapy-org/MiraPy
-    :alt: Travis CI
-
-.. image:: http://img.shields.io/badge/license-BSD-blue.svg?style=flat-square
+.. image:: https://img.shields.io/github/license/mirapy-org/MiraPy.svg?style=flat-square
         :target: https://github.com/mirapy-org/MiraPy/blob/master/LICENSE.rst
         :alt: LICENSE
 
+.. image:: https://img.shields.io/travis/com/mirapy-org/MiraPy.svg?style=flat-square
+    :target: https://travis-ci.com/mirapy-org/MiraPy
+    :alt: Travis CI
 
+.. image:: https://img.shields.io/badge/chat-on%20slack-49C39E.svg?style=flat-square
+    :target: https://join.slack.com/t/mirapy/shared_invite/enQtNjEyNDQwNTI2NDY3LTE3ZmI3M2EyMjdkZWU4NTE2NjkxZjdhYWE4ZjUyODY0NzllNzRlMzZhNThhNWRiMjk4MjNhYWQ3NjA3YjJiNGY
+    :alt: Slack
 
 
 MiraPy is a Python package for Deep Learning in Astronomy. It is built using
