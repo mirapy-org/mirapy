@@ -2,8 +2,8 @@ import os
 import argparse
 import numpy as np
 from keras.optimizers import Adam
-from models import *
-from utils import load_data
+from mirapy.classifiers.models import *
+from mirapy.classifiers.utils import load_data
 
 parser = argparse.ArgumentParser(
                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -42,9 +42,9 @@ if args.test_split >= 1 or args.test_split <= 0:
 
 
 def train(model):
-    if not type(x_train) == np.ndarray and type(y_train) == np.ndarray:
+    if not isinstance(x_train) == np.ndarray and isinstance(y_train) == np.ndarray:
         raise ValueError('Input array should be numpy arrays')
-    history = model.fit(x_train, y_train, epochs=args.num_epochs,
+    model.fit(x_train, y_train, epochs=args.num_epochs,
                         shuffle=True, batch_size=args.batch_size,
                         validation_split=args.validation_split)
 
