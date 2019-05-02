@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from keras.optimizers import *
-from keras.models import load_model, Model, Sequential
+from keras.models import load_model, Sequential
 from keras.layers import Input, Dense
 import warnings
 warnings.filterwarnings('ignore')
