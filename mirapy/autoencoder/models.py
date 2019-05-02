@@ -8,6 +8,9 @@ class Autoencoder:
         self.model = None
         self.history = None
         self.dim = None
+        self.input_img = None
+        self.encoded = None
+        self.decoded = None
 
     def compile(self, optimizer, loss):
         pass
