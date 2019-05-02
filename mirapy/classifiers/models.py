@@ -14,10 +14,10 @@ class Classifier:
     def build_model(self, x):
         pass
 
-    def save_model(self, params):
+    def save_model(self, path, model_name):
         pass
 
-    def load_model(self):
+    def load_model(self, path, model_name):
         pass
 
 

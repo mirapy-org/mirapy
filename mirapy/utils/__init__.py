@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 import numpy as np
 import scipy
 from tqdm import tqdm
 from keras.preprocessing.image import img_to_array
+=======
+# Licensed under the MIT license - see LICENSE.rst
+>>>>>>> 5c028025dbaa4d0a605c335f22346b3dd77ac535
 
 
 def get_psf_airy(n, nr):

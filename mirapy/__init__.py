@@ -1,4 +1,4 @@
-# Licensed under a 3-clause BSD style license - see LICENSE.rst
+# Licensed under the MIT license - see LICENSE.rst
 
 # Packages may add whatever they like to this file, but
 # should keep this content at the top.
@@ -20,6 +20,5 @@ if sys.version_info < tuple((int(val) for val in __minimum_python_version__.spli
 
 if not _ASTROPY_SETUP_:
     # For egg_info test builds to pass, put package imports here.
-    from .example_mod import *
     from mirapy.fitting import *
     from mirapy.autoencoder import *
