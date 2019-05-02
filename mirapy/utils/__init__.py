@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b77eef0121943937dafd94c4b88a3f23a972c5b1
 import numpy as np
 import scipy
 from tqdm import tqdm
 from keras.preprocessing.image import img_to_array
-<<<<<<< HEAD
-=======
-# Licensed under the MIT license - see LICENSE.rst
->>>>>>> 5c028025dbaa4d0a605c335f22346b3dd77ac535
-=======
->>>>>>> b77eef0121943937dafd94c4b88a3f23a972c5b1
 
 
 def get_psf_airy(n, nr):
