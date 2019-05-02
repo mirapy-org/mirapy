@@ -53,7 +53,8 @@ class Gaussian1D(Model1D):
         -------
         array : Output of the Gaussian function.
         """
-        return self.amplitude * np.exp(-0.5 * (x - self.mean) ** 2 / self.stddev ** 2)
+        return self.amplitude * \
+               np.exp(-0.5 * (x - self.mean) ** 2 / self.stddev ** 2)
 
     def set_params_from_array(self, params):
         """
