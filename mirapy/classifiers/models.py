@@ -76,12 +76,3 @@ class XRayBinaryClassifier(Classifier):
         self.model.fit(x_train, y_train, epochs=epochs, shuffle=True,
                        batch_size=batch_size,
                        validation_split=validation_split)
-
-    '''
-    x_train, y_train, _, _ = load_data(args.data_directory, args.test_split,
-                                       args.standard_scaler)
-    xrb = XRayBinaryClassifier()
-    xrb.compile(args.activation, args.optimizer)
-    train(xrb.model)
-    xrb.save_model(args.save_dir, args.model_name)
-    '''
