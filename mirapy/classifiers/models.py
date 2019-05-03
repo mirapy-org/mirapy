@@ -1,7 +1,7 @@
 import os
 import numpy as np
-from keras.optimizers import Adam
-from keras.models import load_model, Model
+from keras.optimizers import *
+from keras.models import load_model, Sequential
 from keras.layers import Input, Dense
 import warnings
 warnings.filterwarnings('ignore')
@@ -35,12 +35,13 @@ class XRayBinaryClassifier(Classifier):
                  optimizer=Adam(lr=0.0001, decay=1e-6)):
         self.activation = activation
         self.optimizer = optimizer
-        input_x = Input(shape=(3,))
-        x = Dense(32, activation=self.activation)(input_x)
-        x = Dense(32, activation=self.activation)(x)
-        x = Dense(16, activation=self.activation)(x)
-        y = Dense(3, activation='softmax')(x)
-        self.model = Model(input_x, y)
+
+        model = Sequential()
+        model.add(Dense(32, input_shape=(3,), activation=self.activation))
+        model.add(Dense(32, activation=self.activation))
+        model.add(Dense(16, activation=self.activation))
+        model.add(Dense(3, activation='softmax'))
+        self.model = model
 
     def compile(self, loss='mean_squared_error'):
         """
@@ -69,10 +70,13 @@ class XRayBinaryClassifier(Classifier):
     def train(self, x_train, y_train, epochs=100, batch_size=32,
               validation_split=0.1):
 
-        if not isinstance(x_train) == np.ndarray and\
-                isinstance(y_train) == np.ndarray:
+        if not isinstance(x_train, np.ndarray) and\
+                isinstance(y_train, np.ndarray):
             raise ValueError('Input array should be numpy arrays')
 
         self.model.fit(x_train, y_train, epochs=epochs, shuffle=True,
                        batch_size=batch_size,
                        validation_split=validation_split)
+
+    def test(self, x_test):
+        return self.model.predict_classes(x_test)
