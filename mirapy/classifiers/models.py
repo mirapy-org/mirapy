@@ -80,3 +80,42 @@ class XRayBinaryClassifier(Classifier):
 
     def test(self, x_test):
         return self.model.predict_classes(x_test)
+
+
+class AtlasVarStarClassifier(Classifier):
+
+    def __init__(self, activation='relu',
+                 optimizer=Adam(lr=0.01, decay=0.01), num_classes=9):
+        self.activation = activation
+        self.optimizer = optimizer
+        model = Sequential()
+        model.add(Dense(64, input_shape=(22,), activation=self.activation))
+        model.add(Dense(64, activation=self.activation))
+        model.add(Dense(32, activation=self.activation))
+        model.add(Dense(16, activation=self.activation))
+        model.add(Dense(num_classes, activation='softmax'))
+        self.model = model
+
+    def compile(self, loss='mean_squared_error'):
+        """
+        build the model
+        """
+        self.model.compile(self.optimizer,
+                           loss=loss, metrics=['accuracy'])
+
+    def save_model(self, model_name, path='models/'):
+        """
+        save model
+        """
+        path = 'models/' + model_name
+        self.model.save(path)
+
+    def load_model(self, model_name, path='models/'):
+        """
+        load saved model
+        """
+        path = 'models/' + model_name
+        if os.path.exists(path):
+            self.model = load_model(path)
+        else:
+            raise FileNotFoundError("Model does not exists")
