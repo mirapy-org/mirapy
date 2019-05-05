@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from keras.utils.np_utils import to_categorical
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
+
 def load_messier_catalog_images(path, img_size=None, disable_tqdm=False):
     # TODO: Allow downloading data from github repo
     images = []
@@ -83,22 +84,27 @@ def load_xray_binary_data(path, test_split, standard_scaler=True):
     return x_train, y_train, x_test, y_test
 
 
-def load_atlas_star_data(path, test_split, standard_scaler=True):
+def load_atlas_star_data(path, test_split, standard_scaler=True, feat_list=None):
     df = pd.read_csv(path)
     y = df['CLASS']
 
     # features selected using GradientBoost feature selection(non-zero second decimal place)
-
-    feature_list = ["fp_timerev", "fp_powerterm", "fp_phase180", "fp_hifreq",
-              "fp_PPFAPshort1", "fp_period", "fp_fournum", "fp_multfac",
-              "vf_percentile10", "fp_PPFAPshort3", "fp_PPFAPshort4",
-              "vf_S_K", "ls_Cchin", "vf_wsd", "vf_percentile75",
-              "fp_domperiod", "ls_RMS", "ls_Pday", "vf_percentile25",
-              "fp_magrms_o", "fp_origLogFAP", "vf_percentile5"]
+    if feat_list is None:
+        feat_list = ["fp_timerev", "fp_powerterm", "fp_phase180",
+                     "fp_hifreq", "fp_PPFAPshort1", "fp_period",
+                     "fp_fournum", "fp_multfac", "vf_percentile10",
+                     "fp_PPFAPshort3", "fp_PPFAPshort4", "vf_S_K",
+                     "ls_Cchin", "vf_wsd", "vf_percentile75",
+                     "fp_domperiod", "ls_RMS", "ls_Pday", "vf_percentile25",
+                     "fp_magrms_o", "fp_origLogFAP", "vf_percentile5"]
 
     l = list(df)
+    for f in feat_list:
+        if f not in l:
+            raise AssertionError("Key "+f + " not in dataframe")
+
     for f in l:
-        if f in feature_list:
+        if f in feat_list:
             continue
         df.drop(f, axis=1, inplace=True)
 
@@ -110,16 +116,15 @@ def load_atlas_star_data(path, test_split, standard_scaler=True):
         sc = StandardScaler()
         x = sc.fit_transform(x)
 
-    x_train, x_test, y_train, y_test = \
-        train_test_split(x, y, test_size=test_split, random_state=42)
-
     label_encoder = LabelEncoder()
-    integer_encoded = label_encoder.fit_transform(y_train)
+    integer_encoded = label_encoder.fit_transform(y)
 
     onehot_encoder = OneHotEncoder(sparse=False)
     integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
     onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
+    y = onehot_encoded
 
-    y_train = onehot_encoded
+    x_train, x_test, y_train, y_test = \
+        train_test_split(x, y, test_size=test_split, random_state=42)
 
     return x_train, y_train, x_test, y_test

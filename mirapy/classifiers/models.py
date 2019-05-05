@@ -119,3 +119,17 @@ class AtlasVarStarClassifier(Classifier):
             self.model = load_model(path)
         else:
             raise FileNotFoundError("Model does not exists")
+
+    def train(self, x_train, y_train, epochs=100, batch_size=32,
+              validation_split=0.1):
+
+        if not isinstance(x_train, np.ndarray) and\
+                isinstance(y_train, np.ndarray):
+            raise ValueError('Input array should be numpy arrays')
+
+        self.model.fit(x_train, y_train, epochs=epochs, shuffle=True,
+                       batch_size=batch_size,
+                       validation_split=validation_split)
+
+    def test(self, x_test):
+        return self.model.predict_classes(x_test)
