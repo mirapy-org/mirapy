@@ -30,9 +30,9 @@ def prepare_messier_catalog_images(images, psf, sigma):
     return images, x_conv2d_noisy
 
 
-def load_xray_binary_data(path, test_split, standard_scaler):
+def load_xray_binary_data(data_directory, test_split, standard_scaler):
     asc_files = [os.path.join(dp, f)
-                 for dp, dn, filenames in os.walk(path)
+                 for dp, dn, filenames in os.walk(data_directory)
                  for f in filenames if os.path.splitext(f)[1] == '.asc']
     datapoints = []
     for path in asc_files:
