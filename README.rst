@@ -5,12 +5,12 @@ MiraPy: Python Package for Machine Learning in Astronomy
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
 
-.. image:: https://img.shields.io/github/license/mirapy-org/MiraPy.svg?style=flat-square
-        :target: https://github.com/mirapy-org/MiraPy/blob/master/LICENSE.rst
+.. image:: https://img.shields.io/github/license/mirapy-org/mirapy.svg?style=flat-square
+        :target: https://github.com/mirapy-org/mirapy/blob/master/LICENSE.rst
         :alt: LICENSE
 
-.. image:: https://img.shields.io/travis/com/mirapy-org/MiraPy.svg?style=flat-square
-    :target: https://travis-ci.com/mirapy-org/MiraPy
+.. image:: https://img.shields.io/travis/com/mirapy-org/mirapy.svg?style=flat-square
+    :target: https://travis-ci.com/mirapy-org/mirapy
     :alt: Travis CI
 
 .. image:: https://img.shields.io/badge/chat-on%20Slack-E51670.svg?style=flat-square
