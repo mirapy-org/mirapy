@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 
 
 class Autoencoder:
+    """
+        Abstract Class for Autoencoders
+    """
     def __init__(self):
         self.model = None
         self.history = None
@@ -13,6 +16,7 @@ class Autoencoder:
         self.decoded = None
 
     def compile(self, optimizer, loss):
+        """Used to compile autoencoder"""
         pass
 
     def train(self, x, y, batch_size=32, epochs=100, validation_data=None,
