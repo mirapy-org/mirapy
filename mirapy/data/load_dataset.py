@@ -84,12 +84,15 @@ def load_xray_binary_data(path, test_split, standard_scaler=True):
     return x_train, y_train, x_test, y_test
 
 
-def load_atlas_star_data(path, test_split, standard_scaler=True, feat_list=[]):
+def load_atlas_star_data(path, test_split, standard_scaler=True,
+                         feat_list=None):
     df = pd.read_csv(path)
     y = df['CLASS']
 
-    # features selected using GradientBoost feature selection(non-zero second decimal place)
-    if not feat_list:
+    # features selected using GradientBoost feature selection
+    # (non-zero second decimal place)
+
+    if feat_list is None:
         feat_list = ["fp_timerev", "fp_powerterm", "fp_phase180",
                      "fp_hifreq", "fp_PPFAPshort1", "fp_period",
                      "fp_fournum", "fp_multfac", "vf_percentile10",
@@ -98,12 +101,12 @@ def load_atlas_star_data(path, test_split, standard_scaler=True, feat_list=[]):
                      "fp_domperiod", "ls_RMS", "ls_Pday", "vf_percentile25",
                      "fp_magrms_o", "fp_origLogFAP", "vf_percentile5"]
 
-    l = list(df)
+    list_cols = list(df)
     for f in feat_list:
-        if f not in l:
+        if f not in list_cols:
             raise AssertionError("Key "+f + " not in dataframe")
 
-    for f in l:
+    for f in list_cols:
         if f in feat_list:
             continue
         df.drop(f, axis=1, inplace=True)
