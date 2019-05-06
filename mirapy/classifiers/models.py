@@ -85,11 +85,11 @@ class XRayBinaryClassifier(Classifier):
 class AtlasVarStarClassifier(Classifier):
 
     def __init__(self, activation='relu',
-                 optimizer=Adam(lr=0.01, decay=0.01), num_classes=9):
+                 optimizer=Adam(lr=0.01, decay=0.01), input_size=22, num_classes=9):
         self.activation = activation
         self.optimizer = optimizer
         model = Sequential()
-        model.add(Dense(64, input_shape=(22,), activation=self.activation))
+        model.add(Dense(64, input_shape=(input_size,), activation=self.activation))
         model.add(Dense(64, activation=self.activation))
         model.add(Dense(32, activation=self.activation))
         model.add(Dense(16, activation=self.activation))
