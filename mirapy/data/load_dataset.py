@@ -132,3 +132,7 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
     y_train = onehot_encoded
 
     return x_train, y_train, x_test, y_test
+
+
+def load_ogle_dataset(path, test_split):
+    

@@ -2,7 +2,7 @@ import os
 import numpy as np
 from keras.optimizers import *
 from keras.models import load_model, Sequential
-from keras.layers import Input, Dense
+from keras.layers import Input, Dense, LSTM, Dropout
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -134,3 +134,25 @@ class AtlasVarStarClassifier(Classifier):
 
     def test(self, x_test):
         return self.model.predict_classes(x_test)
+
+
+class OgleClassifier(Classifier):
+
+    def __init__(self, activation='relu', input_size=22, num_classes=9):
+        self.activation = activation
+        model = Sequential()
+        model.add(LSTM(units=64, input_shape=input_size))
+        model.add(Dense(64, activation='relu'))
+        model.add(Dropout(0.2))
+        model.add(Dense(16, activation='relu'))
+        model.add(Dense(num_classes, activation='softmax'))
+        self.model = model
+
+    def compile(self, loss='mean_squared_error'):
+        """
+        build the model
+        """
+        self.optimizer = optimizer
+        self.model.compile(self.optimizer, loss=loss, metrics=['accuracy'],
+                           optimizer=Adam(lr=0.01, decay=0.01))
+
