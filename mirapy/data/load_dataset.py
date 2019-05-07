@@ -9,6 +9,8 @@ from sklearn.model_selection import train_test_split
 from keras.utils.np_utils import to_categorical
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
+from mirapy.utils import unpickle
+
 
 def load_messier_catalog_images(path, img_size=None, disable_tqdm=False):
     # TODO: Allow downloading data from github repo
@@ -130,5 +132,32 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
     onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
 
     y_train = onehot_encoded
+
+    return x_train, y_train, x_test, y_test
+
+
+def load_htru1_data(data_dir='htru1-batches-py'):
+    x_train = None
+    y_train = []
+
+    for i in range(1, 6):
+        x_train_dict = unpickle(data_dir + "/data_batch_{}".format(i))
+        if i == 1:
+            x_train = x_train_dict[b'data']
+        else:
+            x_train = np.vstack((x_train, x_train_dict[b'data']))
+        y_train += x_train_dict[b'labels']
+
+    x_train = x_train.reshape((len(x_train), 3, 32, 32))
+    x_train = np.rollaxis(x_train, 1, 4)
+    y_train = np.array(y_train)
+
+    x_test_dict = unpickle(data_dir + "/test_batch")
+    x_test = x_test_dict[b'data']
+    y_test = x_test_dict[b'labels']
+
+    x_test = np.array(x_test).reshape((len(x_test), 3, 32, 32))
+    x_test = np.rollaxis(x_test, 1, 4)
+    y_test = np.array(y_test)
 
     return x_train, y_train, x_test, y_test
