@@ -1,10 +1,10 @@
 import os
-import numpy as np
 from keras.optimizers import *
 from keras.models import load_model, Sequential
-from keras.layers import Input, Dense, LSTM, Dropout
-import warnings
-warnings.filterwarnings('ignore')
+# from keras.layers import Input, Dense, LSTM, Dropout
+from keras.layers import *
+import matplotlib.pyplot as plt
+
 
 
 class Classifier:
@@ -13,7 +13,7 @@ class Classifier:
         self.optimizer = None
         self.activation = None
 
-    def build_model(self, x):
+    def compile(self, optimizer, loss='mean_squared_error'):
         pass
 
     def save_model(self, model_name, path):
@@ -25,6 +25,22 @@ class Classifier:
     def train(self, x_train, y_train, epochs=100, batch_size=32,
               validation_split=0.1):
         pass
+
+    def predict(self, x):
+        pass
+
+    def plot_history(self):
+        plt.plot(self.history.history['loss'])
+        if 'val_loss' in self.history.history.keys():
+            plt.plot(self.history.history['val_loss'])
+        plt.title('Autoencoder loss')
+        plt.ylabel('Loss')
+        plt.xlabel('Epoch')
+        plt.legend(['Train', 'Test'], loc='upper right')
+        plt.show()
+
+    def reset(self):
+        self.model.reset_states()
 
 
 class XRayBinaryClassifier(Classifier):
@@ -156,3 +172,52 @@ class OgleClassifier(Classifier):
         self.model.compile(self.optimizer, loss=loss, metrics=['accuracy'],
                            optimizer=Adam(lr=0.01, decay=0.01))
 
+
+class HTRU1Classifier(Classifier):
+    def __init__(self, input_dim, activation='relu', padding='same',
+                 dropout=0.25, num_classes=2):
+        self.input_dim = input_dim
+        self.activation = activation
+        self.padding = padding
+        self.history = None
+
+        self.model = Sequential()
+        self.model.add(Conv2D(32, (3, 3), padding=padding,
+                              input_shape=input_dim))
+        self.model.add(Activation(activation))
+        self.model.add(Conv2D(32, (3, 3)))
+        self.model.add(Activation(activation))
+        self.model.add(MaxPooling2D(pool_size=(2, 2)))
+        self.model.add(Dropout(dropout))
+
+        self.model.add(Conv2D(64, (3, 3), padding=padding))
+        self.model.add(Activation(activation))
+        self.model.add(Conv2D(64, (3, 3)))
+        self.model.add(Activation(activation))
+        self.model.add(MaxPooling2D(pool_size=(2, 2)))
+        self.model.add(Dropout(dropout))
+
+        self.model.add(Flatten())
+        self.model.add(Dense(512))
+        self.model.add(Activation(activation))
+        self.model.add(Dropout(0.5))
+        self.model.add(Dense(num_classes))
+        self.model.add(Activation('softmax'))
+
+    def compile(self, optimizer, loss='categorical_crossentropy'):
+        self.model.compile(loss=loss, optimizer=optimizer)
+
+    def train(self, x_train, y_train, epochs=100, batch_size=32,
+              reset_weights=True, class_weight=None, validation_data=None,
+              verbose=1):
+        if reset_weights:
+            self.reset()
+
+        self.history = self.model.fit(x_train, y_train, batch_size=batch_size,
+                                      epochs=epochs,
+                                      validation_data=validation_data,
+                                      class_weight=class_weight, shuffle=True,
+                                      verbose=verbose)
+
+    def predict(self, x):
+        return self.model.predict_classes(x)
