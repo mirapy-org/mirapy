@@ -136,7 +136,33 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
     return x_train, y_train, x_test, y_test
 
 
-# def load_ogle_dataset(path, test_split):
+def load_ogle_dataset(path, classes, test_split, time_len=50, pad=0):
+    mag = []
+    flag = True
+    for class_ in classes:
+        folder = path + '/' + class_ + '/I'
+        for file in os.listdir(folder):
+            num_lines = sum(1 for line in open(folder + '/' + file))
+            if num_lines < time_len:
+                continue
+            mag_i = []
+            for line in open(folder + '/' + file):
+                try:
+                    a, b, c = line.split(' ')
+                except Exception:
+                    break
+                mag_i.append(float(b))
+                if len(mag_i) == time_len:
+                    mag.append(np.array(mag_i))
+                    y.append(classes.index(class_))
+                    break
+
+    mag = np.array(mag)
+    y = np.array(y)
+    mag = mag.reshape(mag.shape[0], mag.shape[1], 1)
+    x_train, x_test, y_train, y_test = \
+        train_test_split(mag, y, test_size=test_split, random_state=42)
+    return x_train, y_train, x_test, y_test
 
 
 def load_htru1_data(data_dir='htru1-batches-py'):
