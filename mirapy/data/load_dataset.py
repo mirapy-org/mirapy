@@ -135,4 +135,3 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
 
 
 def load_ogle_dataset(path, test_split):
-    
