@@ -50,6 +50,11 @@ Contributing
 
 MiraPy is far from perfect and we would love to see your contributions to open source community! MiraPy is open source, built on open source, and we'd love to have you hang out in our community.
 
+About Us
+--------
+
+MiraPy is developed by `Swapnil Sharma <https://www.linkedin.com/in/swapsha96/>`_ and `Akhil Singhal <https://www.linkedin.com/in/akhil-singhal-a59448106/>`_ as their final year 'Major Technical Project' under the guidance of `Dr. Arnav Bhavsar <http://faculty.iitmandi.ac.in/~arnav/>`_ at `Indian Institute of Technology, Mandi <http://iitmandi.ac.in/>`_.
+
 License
 -------
 
