@@ -115,7 +115,8 @@ class AtlasVarStarClassifier(Classifier):
         model.add(Dense(num_classes, activation='softmax'))
         self.model = model
 
-    def compile(self, optimizer=Adam(lr=0.01, decay=0.01), loss='mean_squared_error'):
+    def compile(self, optimizer=Adam(lr=0.01, decay=0.01),
+                loss='mean_squared_error'):
         """
         build the model
         """

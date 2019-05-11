@@ -150,7 +150,7 @@ def load_ogle_dataset(path, classes, test_split=0.2, time_len=50):
             for line in open(folder + '/' + file):
                 try:
                     a, b, c = line.split(' ')
-                except:
+                except Exception:
                     break
                 mag_i.append(float(b))
                 if len(mag_i) == time_len:
