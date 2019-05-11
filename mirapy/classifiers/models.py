@@ -6,7 +6,6 @@ from keras.layers import *
 import matplotlib.pyplot as plt
 
 
-
 class Classifier:
     def __init__(self):
         self.model = None
@@ -23,8 +22,8 @@ class Classifier:
     def load_model(self, model_name, path):
         pass
 
-    def train(self, x_train, y_train, epochs=100, batch_size=32,
-              validation_split=0.1):
+    def train(self, x_train, y_train, epochs, batch_size, reset_weights,
+              class_weight, validation_data, verbose):
         pass
 
     def predict(self, x):
