@@ -136,7 +136,8 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
     return x_train, y_train, x_test, y_test
 
 
-def load_ogle_dataset(path, classes, test_split, time_len=50, pad=0):
+# handle class inequality
+def load_ogle_dataset(path, classes, test_split, time_len=50):
     mag = []
     flag = True
     for class_ in classes:
@@ -149,7 +150,7 @@ def load_ogle_dataset(path, classes, test_split, time_len=50, pad=0):
             for line in open(folder + '/' + file):
                 try:
                     a, b, c = line.split(' ')
-                except Exception:
+                except:
                     break
                 mag_i.append(float(b))
                 if len(mag_i) == time_len:

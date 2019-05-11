@@ -154,7 +154,7 @@ class AtlasVarStarClassifier(Classifier):
 
 class OgleClassifier(Classifier):
 
-    def __init__(self, activation='relu', input_size=22, num_classes=9):
+    def __init__(self, activation='relu', input_size=50, num_classes=5):
         self.activation = activation
         model = Sequential()
         model.add(LSTM(units=64, input_shape=input_size))
