@@ -137,8 +137,8 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
 
 
 # handle class inequality
-def load_ogle_dataset(path, classes, test_split, time_len=50):
-    mag = []
+def load_ogle_dataset(path, classes, test_split=0.2, time_len=50):
+    mag, y = [], []
     flag = True
     for class_ in classes:
         folder = path + '/' + class_ + '/I'
