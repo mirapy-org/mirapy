@@ -156,7 +156,7 @@ class AtlasVarStarClassifier(Classifier):
         return self.model.predict_classes(x_test)
 
 
-class OgleClassifier(Classifier):
+class OGLEClassifier(Classifier):
 
     def __init__(self, activation='relu', input_size=50, num_classes=5):
         self.activation = activation
