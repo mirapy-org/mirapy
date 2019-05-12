@@ -149,7 +149,7 @@ def load_ogle_dataset(path, classes, test_split=0.2, time_len=50, pad=False):
                 continue
             for line in open(folder + '/' + file):
                 try:
-                    a, b, _ = line.split(' ')
+                    _, b, _ = line.split(' ')
                 except Exception:
                     break
                 mag_i[j] = float(b)
