@@ -137,22 +137,24 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
 
 
 # handle class inequality
-def load_ogle_dataset(path, classes, test_split=0.2, time_len=50):
+def load_ogle_dataset(path, classes, test_split=0.2, time_len=50, pad=False):
     mag, y = [], []
     for class_ in classes:
         folder = path + '/' + class_ + '/I'
         for file in os.listdir(folder):
             num_lines = sum(1 for line in open(folder + '/' + file))
-            if num_lines < time_len:
+            mag_i, j = [0 for i in range(time_len)], 0
+
+            if not pad and num_lines < time_len:
                 continue
-            mag_i = []
             for line in open(folder + '/' + file):
                 try:
-                    a, b, c = line.split(' ')
+                    a, b, _ = line.split(' ')
                 except Exception:
                     break
-                mag_i.append(float(b))
-                if len(mag_i) == time_len:
+                mag_i[j] = float(b)
+                j += 1
+                if j is time_len or j is num_lines:
                     mag.append(np.array(mag_i))
                     y.append(classes.index(class_))
                     break
