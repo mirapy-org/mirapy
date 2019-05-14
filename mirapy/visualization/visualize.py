@@ -55,6 +55,6 @@ def visualize_3d(x, y):
     ax.set_xlabel('Principal Component 1')
     ax.set_ylabel('Principal Component 2')
     ax.set_zlabel('Principal Component 3')
-    ax.set_title('3 Component PCA')
+    ax.set_title('3D Feature Visualization')
     fig.colorbar(im, ax=ax)
     ax.grid()

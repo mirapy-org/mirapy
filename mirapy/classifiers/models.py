@@ -32,7 +32,7 @@ class Classifier:
         Saves a model into a H5py file.
 
         :param model_name: File name.
-        :param path: Pa
+        :param path: Path of directory.
         """
         path += model_name
         self.model.save(path)
@@ -98,7 +98,7 @@ class Classifier:
 class XRayBinaryClassifier(Classifier):
     def __init__(self, activation='relu'):
         """
-        Feature classification model for X-Ray Binaries.
+        Classification model for X-Ray Binaries.
 
         :param activation: String (activation function name).
         """
@@ -148,11 +148,12 @@ class XRayBinaryClassifier(Classifier):
                                       class_weight=class_weight, shuffle=True,
                                       verbose=verbose)
 
-    def test(self, x_test):
+    def predict(self, x_test):
         """
         Predicts the output of the model for the given data as input.
 
         :param x_test: Input data as Numpy arrays.
+        :return: Predicted class for Input data
         """
         return self.model.predict_classes(x_test)
 
@@ -160,6 +161,13 @@ class XRayBinaryClassifier(Classifier):
 class AtlasVarStarClassifier(Classifier):
 
     def __init__(self, activation='relu', input_size=22, num_classes=9):
+        """
+        Classification model for ATLAS variable stars
+
+        :param activation: String (activation function name).
+        :param input_size: Integer. Dimension of Feature Vector.
+        :param num_classes: Integer. Number of Classes.
+        """
         self.activation = activation
         self.history = None
 
@@ -187,6 +195,19 @@ class AtlasVarStarClassifier(Classifier):
     def train(self, x_train, y_train, epochs=50, batch_size=100,
               reset_weights=True, class_weight=None, validation_data=None,
               verbose=1):
+        """
+        Trains the model on the training data with given settings.
+
+        :param x_train:  Numpy array of training data.
+        :param y_train:  Numpy array of target data.
+        :param epochs: Integer. Number of epochs during training.
+        :param batch_size: Number of samples per gradient update.
+        :param reset_weights: Boolean. Set true to reset the weights of model.
+        :param class_weight: Dictionary. Weights of classes in loss function
+        during training.
+        :param validation_data: Numpy array of validation data.
+        :param verbose: Value is 0, 1, or 2.
+        """
         if reset_weights:
             self.reset()
 
@@ -196,30 +217,27 @@ class AtlasVarStarClassifier(Classifier):
                                       class_weight=class_weight, shuffle=True,
                                       verbose=verbose)
 
-    def save_model(self, model_name, path='models/'):
+    def predict(self, x_test):
         """
-        save model
-        """
-        path = 'models/' + model_name
-        self.model.save(path)
+        Predicts the output of the model for the given data as input.
 
-    def load_model(self, model_name, path='models/'):
+        :param x_test: Input data as Numpy arrays.
+        :return: Predicted class for Input data
         """
-        load saved model
-        """
-        path = 'models/' + model_name
-        if os.path.exists(path):
-            self.model = load_model(path)
-        else:
-            raise FileNotFoundError("Model does not exists")
-
-    def test(self, x_test):
         return self.model.predict_classes(x_test)
 
 
 class OGLEClassifier(Classifier):
 
     def __init__(self, activation='relu', input_size=50, num_classes=5):
+        """
+        Feature classification model for OGLE variable star
+        time-series dataset.
+
+        :param activation: String (activation function name).
+        :param input_size: Integer. Dimension of Feature Vector.
+        :param num_classes: Integer. Number of Classes.
+        """
         self.activation = activation
         self.history = None
 
@@ -233,7 +251,10 @@ class OGLEClassifier(Classifier):
 
     def compile(self, optimizer='adam', loss='categorical_crossentropy'):
         """
-        build the model
+        Compile model with given configuration.
+
+        :param optimizer: Instance of optimizer.
+        :param loss: String (name of loss function) or custom function.
         """
         self.optimizer = optimizer
         self.model.compile(self.optimizer, loss=loss, metrics=['accuracy'])
@@ -241,6 +262,19 @@ class OGLEClassifier(Classifier):
     def train(self, x_train, y_train, epochs=50, batch_size=100,
               reset_weights=True, class_weight=None, validation_data=None,
               verbose=1):
+        """
+        Trains the model on the training data with given settings.
+
+        :param x_train:  Numpy array of training data.
+        :param y_train:  Numpy array of target data.
+        :param epochs: Integer. Number of epochs during training.
+        :param batch_size: Number of samples per gradient update.
+        :param reset_weights: Boolean. Set true to reset the weights of model.
+        :param class_weight: Dictionary. Weights of classes in loss function
+        during training.
+        :param validation_data: Numpy array of validation data.
+        :param verbose: Value is 0, 1, or 2.
+        """
         if reset_weights:
             self.reset()
 
@@ -250,8 +284,14 @@ class OGLEClassifier(Classifier):
                                       class_weight=class_weight, shuffle=True,
                                       verbose=verbose)
 
-    def predict(self, x):
-        return self.model.predict_classes(x)
+    def predict(self, x_test):
+        """
+        Predicts the output of the model for the given data as input.
+
+        :param x_test: Input data as Numpy arrays.
+        :return: Predicted class for Input data
+        """
+        return self.model.predict_classes(x_test)
 
 
 class HTRU1Classifier(Classifier):
@@ -322,5 +362,6 @@ class HTRU1Classifier(Classifier):
         Predicts the output of the model for the given data as input.
 
         :param x: Input data as Numpy arrays.
+        :return: Predicted class for Input data
         """
         return self.model.predict_classes(x)
