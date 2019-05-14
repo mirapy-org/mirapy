@@ -153,7 +153,7 @@ class XRayBinaryClassifier(Classifier):
         Predicts the output of the model for the given data as input.
 
         :param x_test: Input data as Numpy arrays.
-        :return: Predicted class for Input data
+        :return: Predicted class for Input data.
         """
         return self.model.predict_classes(x_test)
 
@@ -222,7 +222,7 @@ class AtlasVarStarClassifier(Classifier):
         Predicts the output of the model for the given data as input.
 
         :param x_test: Input data as Numpy arrays.
-        :return: Predicted class for Input data
+        :return: Predicted class for Input data.
         """
         return self.model.predict_classes(x_test)
 
@@ -289,7 +289,7 @@ class OGLEClassifier(Classifier):
         Predicts the output of the model for the given data as input.
 
         :param x_test: Input data as Numpy arrays.
-        :return: Predicted class for Input data
+        :return: Predicted class for Input data.
         """
         return self.model.predict_classes(x_test)
 
@@ -362,6 +362,6 @@ class HTRU1Classifier(Classifier):
         Predicts the output of the model for the given data as input.
 
         :param x: Input data as Numpy arrays.
-        :return: Predicted class for Input data
+        :return: Predicted class for Input data.
         """
         return self.model.predict_classes(x)
