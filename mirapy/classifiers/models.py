@@ -175,7 +175,10 @@ class AtlasVarStarClassifier(Classifier):
     def compile(self, optimizer=Adam(lr=0.01, decay=0.01),
                 loss='mean_squared_error'):
         """
-        build the model
+        Compile model with given configuration.
+
+        :param optimizer: Instance of optimizer.
+        :param loss: String (name of loss function) or custom function.
         """
         self.optimizer = optimizer
         self.model.compile(self.optimizer,
