@@ -136,6 +136,37 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
     return x_train, y_train, x_test, y_test
 
 
+# handle class inequality
+def load_ogle_dataset(path, classes, test_split=0.2, time_len=50, pad=False):
+    mag, y = [], []
+    for class_ in classes:
+        folder = path + '/' + class_ + '/I'
+        for file in os.listdir(folder):
+            num_lines = sum(1 for line in open(folder + '/' + file))
+            mag_i, j = [0 for i in range(time_len)], 0
+
+            if not pad and num_lines < time_len:
+                continue
+            for line in open(folder + '/' + file):
+                try:
+                    _, b, _ = line.split(' ')
+                except Exception:
+                    break
+                mag_i[j] = float(b)
+                j += 1
+                if j is time_len or j is num_lines:
+                    mag.append(np.array(mag_i))
+                    y.append(classes.index(class_))
+                    break
+
+    mag = np.array(mag)
+    y = np.array(y)
+    mag = mag.reshape(mag.shape[0], mag.shape[1], 1)
+    x_train, x_test, y_train, y_test = \
+        train_test_split(mag, y, test_size=test_split, random_state=42)
+    return x_train, y_train, x_test, y_test
+
+
 def load_htru1_data(data_dir='htru1-batches-py'):
     x_train = None
     y_train = []
