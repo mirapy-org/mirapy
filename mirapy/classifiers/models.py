@@ -148,14 +148,14 @@ class XRayBinaryClassifier(Classifier):
                                       class_weight=class_weight, shuffle=True,
                                       verbose=verbose)
 
-    def predict(self, x_test):
+    def predict(self, x):
         """
         Predicts the output of the model for the given data as input.
 
-        :param x_test: Input data as Numpy arrays.
+        :param x: Input data as Numpy arrays.
         :return: Predicted class for Input data.
         """
-        return self.model.predict_classes(x_test)
+        return self.model.predict_classes(x)
 
 
 class AtlasVarStarClassifier(Classifier):
