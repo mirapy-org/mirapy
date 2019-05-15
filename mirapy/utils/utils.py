@@ -9,6 +9,7 @@ from keras.preprocessing.image import img_to_array
 def get_psf_airy(n, nr):
     """
     Calculates Point Spread Function.
+
     :param n:
     :param nr:
     :return: Numpy array of Point Spread Function
@@ -25,6 +26,7 @@ def image_augmentation(images, image_data_generator, num_of_augumentations,
                        disable=False):
     """
     Form augmented images for input array of images
+
     :param images: numpy array of Images.
     :param image_data_generator: Keras image generator object.
     :param num_of_augumentations: Number of augmentations of each image.
@@ -50,22 +52,24 @@ def image_augmentation(images, image_data_generator, num_of_augumentations,
     return images_aug
 
 
-def psnr(x, y):
+def psnr(img1, img2):
     """
-    Calculate Peak Signal to Noise Ratio value
-    :param x: Float.
-    :param y: Float.
+    Calculate Peak Signal to Noise Ratio value.
+
+    :param img1: Float. Array of first image.
+    :param img2: Float.Array of second image.
     :return: Float. PSNR value of x and y.
     """
-    mse = np.mean((x - y) ** 2)
+    mse = np.mean((img1 - img2) ** 2)
     return -10 * np.log10(mse)
 
 
 def append_one_to_shape(x):
     """
-    Reshapes input
-    :param x:
-    :return:
+    Reshapes input.
+
+    :param x: Array input.
+    :return: Reshaped array.
     """
     x_shape = x.shape
     x = x.reshape((len(x), np.prod(x.shape[1:])))
@@ -76,6 +80,7 @@ def append_one_to_shape(x):
 def unpickle(file):
     """
     Unpickle and read file.
+
     :param file: Pickle file to read.
     :return: Data loaded from pickle file.
     """
@@ -87,6 +92,7 @@ def unpickle(file):
 def to_numeric(y):
     """
     Convert numpy array of array of probabilities to numeric array.
+
     :param y: Numpy array.
     :return: Numpy array of classes.
     """
@@ -95,7 +101,8 @@ def to_numeric(y):
 
 def accuracy_per_class(y_true, y_pred):
     """
-    Per class accuracy.
+    Computes accuracy per class.
+
     :param y_true: True class.
     :param y_pred: Predicted class.
     :return:

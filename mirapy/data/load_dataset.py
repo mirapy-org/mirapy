@@ -10,7 +10,15 @@ from mirapy.utils import unpickle
 
 
 def load_messier_catalog_images(path, img_size=None, disable_tqdm=False):
-    # TODO: Allow downloading data from github repo
+    """
+    Data loader for Messier catalog images. The images are available
+    in `messier-catalog-images` repository of MiraPy organisation.
+
+    :param path: String. Directory path.
+    :param img_size: Final dimensions of the image.
+    :param disable_tqdm: Boolean. Set True to disable progress bar.
+    :return: Array of images.
+    """
     images = []
     for filename in tqdm(os.listdir(path), disable=disable_tqdm):
         filepath = os.path.join(path, filename)
@@ -24,6 +32,15 @@ def load_messier_catalog_images(path, img_size=None, disable_tqdm=False):
 
 
 def prepare_messier_catalog_images(images, psf, sigma):
+    """
+    Function to apply convolution and add noise from poisson distribution on
+    an array of images.
+
+    :param images: Array of images.
+    :param psf: Point Spread Function (PSF).
+    :param sigma: Float. VStandard deviation.
+    :return: Original image arrays and convolved image arrays.
+    """
     images = np.array(images).astype('float32') / 255.
     x_conv2d = [convolve2d(I, psf, 'same') for I in images]
     x_conv2d_noisy = [I + sigma * np.random.poisson(I) for I in x_conv2d]
@@ -33,6 +50,7 @@ def prepare_messier_catalog_images(images, psf, sigma):
 def load_xray_binary_data(path, standard_scaler=True):
     """
     Loads X Ray Binary dataset from directory.
+
     :param path: Path to the directory.
     :param standard_scaler: Bool. Standardize data or not.
     :return: Dataset and Class labels.
@@ -88,6 +106,7 @@ def load_xray_binary_data(path, standard_scaler=True):
 def load_atlas_star_data(path, standard_scaler=True, feat_list=None):
     """
     Loads ATLAS variable star dataset from directory.
+
     :param path: Path to the directory.
     :param standard_scaler: Bool. Standardize data or not.
     :param feat_list: List of features to include in dataset.
@@ -132,7 +151,8 @@ def load_atlas_star_data(path, standard_scaler=True, feat_list=None):
 # handle class inequality
 def load_ogle_dataset(path, classes, time_len=50, pad=False):
     """
-    Loads OGLE variable star time series data from directory
+    Loads OGLE variable star time series data from directory.
+
     :param path: Path to the directory.
     :param classes: Classes to include in dataset.
     :param time_len: Length of time series data.
