@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D # do not remove this line
 
 
 def visualize_2d(x, y):
