@@ -46,6 +46,19 @@ You can find the applications MiraPy in our `tutorial <https://github.com/mirapy
 
 In future, MiraPy will be able to do more and in better ways and we need your suggestions! Tell us what you would like to see as a part of this package on `Slack <https://join.slack.com/t/mirapy/shared_invite/enQtNjEyNDQwNTI2NDY3LTE3ZmI3M2EyMjdkZWU4NTE2NjkxZjdhYWE4ZjUyODY0NzllNzRlMzZhNThhNWRiMjk4MjNhYWQ3NjA3YjJiNGY>`_.
 
+Installation
+------------
+
+You can download the package using `pip` package installer::
+
+    pip install mirapy
+
+You can also build from source code::
+
+    git clone --recursive https://github.com/mirapy-org/mirapy.git
+    cd mirapy
+    pip install -r requirements.txt
+    python setup.py install
 
 Contributing
 ------------
