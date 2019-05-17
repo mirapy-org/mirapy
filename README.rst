@@ -27,6 +27,8 @@ Keras for developing ML models to run on CPU and GPU seamlessly. The
 aim is to make applying machine learning techniques on astronomical data easy
 for astronomers, researchers and students.
 
+The documentation is available `here <https://mirapy.readthedocs.io>`_.
+
 Applications
 ------------
 
@@ -48,8 +50,6 @@ There are more projects that we will add soon and some of them are as following:
 
 You can find the applications MiraPy in our `tutorial <https://github.com/mirapy-org/tutorials>`_ repository.
 
-In future, MiraPy will be able to do more and in better ways and we need your suggestions! Tell us what you would like to see as a part of this package on `Slack <https://join.slack.com/t/mirapy/shared_invite/enQtNjEyNDQwNTI2NDY3LTE3ZmI3M2EyMjdkZWU4NTE2NjkxZjdhYWE4ZjUyODY0NzllNzRlMzZhNThhNWRiMjk4MjNhYWQ3NjA3YjJiNGY>`_.
-
 Installation
 ------------
 
@@ -67,7 +67,8 @@ You can also build from source code::
 Contributing
 ------------
 
-MiraPy is far from perfect and we would love to see your contributions to open source community! MiraPy is open source, built on open source, and we'd love to have you hang out in our community.
+MiraPy is far from perfect and we would love to see your contributions to open source community! In future, it will be able to do more and in better ways and we need your suggestions! Tell us what you would like to see as a part of this package on `Slack <https://join.slack.com/t/mirapy/shared_invite/enQtNjEyNDQwNTI2NDY3LTE3ZmI3M2EyMjdkZWU4NTE2NjkxZjdhYWE4ZjUyODY0NzllNzRlMzZhNThhNWRiMjk4MjNhYWQ3NjA3YjJiNGY>`_.
+
 
 About Us
 --------
