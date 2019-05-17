@@ -32,8 +32,8 @@ MiraPy can be used for problem solving using ML techniques and will continue to 
 - Astronomical Image Reconstruction using Autoencoder
 - Classification of the first catalog of variable stars by ATLAS
 - HTRU1 Pulsar Dataset Image Classification using Convolutional Neural Network
-- Variable star Classification using Recurrent Neural Network (RNN)
-- 2D visualization of feature sets using Principal Component Analysis (PCA)
+- OGLE Catalogue Variable Star Classification using Recurrent Neural Network (RNN)
+- 2D and 3D visualization of feature sets using Principal Component Analysis (PCA)
 - Curve Fitting using Autograd (basic implementation)
 
 There are more projects that we will add soon and some of them are as following:
