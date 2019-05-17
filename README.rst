@@ -5,17 +5,21 @@ MiraPy: Python Package for Deep Learning in Astronomy
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
 
-.. image:: https://img.shields.io/github/license/mirapy-org/mirapy.svg?style=flat-square
-        :target: https://github.com/mirapy-org/mirapy/blob/master/LICENSE.rst
-        :alt: LICENSE
-
 .. image:: https://img.shields.io/travis/com/mirapy-org/mirapy.svg?style=flat-square
     :target: https://travis-ci.com/mirapy-org/mirapy
     :alt: Travis CI
 
+.. image:: https://readthedocs.org/projects/mirapy/badge/?version=latest
+    :target: https://mirapy.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 .. image:: https://img.shields.io/badge/chat-on%20Slack-E51670.svg?style=flat-square
     :target: https://join.slack.com/t/mirapy/shared_invite/enQtNjEyNDQwNTI2NDY3LTE3ZmI3M2EyMjdkZWU4NTE2NjkxZjdhYWE4ZjUyODY0NzllNzRlMzZhNThhNWRiMjk4MjNhYWQ3NjA3YjJiNGY
     :alt: Slack
+
+.. image:: https://img.shields.io/github/license/mirapy-org/mirapy.svg?style=flat-square
+    :target: https://github.com/mirapy-org/mirapy/blob/master/LICENSE.rst
+    :alt: LICENSE
 
 
 MiraPy is a Python package for Deep Learning in Astronomy. It is built using
