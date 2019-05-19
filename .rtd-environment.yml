@@ -9,3 +9,6 @@ dependencies:
     - Cython
     - matplotlib
     - numpy
+    - pip:
+          - nbsphinx
+          - sphinx-autoapi
