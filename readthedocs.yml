@@ -3,3 +3,5 @@ conda:
 
 python:
    setup_py_install: true
+   extra_requirements:
+     - docs
