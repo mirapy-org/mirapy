@@ -9,4 +9,9 @@ Following are the tutorials for MiraPy:
     :maxdepth: 1
     :glob:
 
-    tutorials/*
+    tutorials/XRay Binary Classification.ipynb
+    tutorials/ATLAS variable star Classification.ipynb
+    tutorials/HTRU1 Batched Dataset Classification.ipynb
+    tutorials/OGLE variable star classification.ipynb
+    tutorials/Astronomical Image Reconstruction using Autoencoder.ipynb
+    tutorials/2D and 3D visualisation of Sunspotter dataset.ipynb
