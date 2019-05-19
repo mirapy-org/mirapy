@@ -10,6 +10,7 @@ Keras for developing ML models to run on CPU and GPU seamlessly. The
 aim is to make applying machine learning techniques on astronomical data easy
 for astronomers, researchers and students.
 
+Github repository: `mirapy-org/mirapy <https://github.com/mirapy-org/mirapy>`_
 
 Table of Contents
 =================
@@ -18,7 +19,8 @@ Table of Contents
     :maxdepth: 2
 
     README
-    tutorials
+    INSTALLATION
+    TUTORIALS
     LICENSE
 
 
