@@ -39,6 +39,6 @@ MiraPy can be used for problem solving using ML techniques and will continue to 
 - Curve Fitting using Autograd (basic implementation)
 
 # Acknowledgements
-MiraPy is developed by `Swapnil Sharma <https://www.linkedin.com/in/swapsha96/>`_ and `Akhil Singhal <https://www.linkedin.com/in/akhil-singhal-a59448106/>`_ as their final year 'Major Technical Project' under the guidance of `Dr. Arnav Bhavsar <http://faculty.iitmandi.ac.in/~arnav/>`_ at `Indian Institute of Technology, Mandi <http://iitmandi.ac.in/>`_.
+MiraPy is developed by Swapnil Sharma and Akhil Singhal as their final year 'Major Technical Project' under the guidance of Dr. Arnav Bhavsar at Indian Institute of Technology, Mandi.
 
 # References
