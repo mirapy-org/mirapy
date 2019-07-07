@@ -1,5 +1,5 @@
 ---
-title: MiraPy: Python Package for Deep Learning in Astronomy
+title: 'MiraPy: Python Package for Deep Learning in Astronomy'
 tags:
   - Python
   - astronomy
