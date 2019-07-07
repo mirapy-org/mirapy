@@ -14,6 +14,8 @@ authors:
     affiliation: 1
   - name: Akhil Singhal
     affiliation: 1
+  - name: Arnav Bhavsar
+    affiliation: 1
 affiliations:
  - name: Indian Institute of Technology, Mandi
    index: 1
