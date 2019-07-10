@@ -30,7 +30,11 @@ Keras for developing ML models to run on CPU and GPU seamlessly. The
 aim is to make applying machine learning techniques on astronomical data easy
 for astronomers, researchers and students.
 
-MiraPy can be used for problem solving using ML techniques and will continue to grow to tackle new problems in Astronomy. Following are some of the experiments that you can perform right now:
+MiraPy can be used for problem solving using ML techniques and will continue to grow to tackle new problems in Astronomy. 
+
+# Applications
+
+Following are the experiments that you can perform right now:
 
 - Classification of X-Ray Binaries using neural network
 - Astronomical Image Reconstruction using Autoencoder
