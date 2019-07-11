@@ -158,7 +158,7 @@ class XRayBinaryClassifier(Classifier):
 
 class AtlasVarStarClassifier(Classifier):
     """
-    Classification model for ATLAS variable stars.
+    Classification model for variable star features in ATLAS catalog.
 
     :param activation: String (activation function name).
     :param input_size: Integer. Dimension of Feature Vector.
