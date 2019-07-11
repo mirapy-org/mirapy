@@ -2,10 +2,10 @@ import autograd.numpy as np
 
 
 class Model1D:
+    """
+    Base class for 1-D model.
+    """
     def __init__(self):
-        """
-        Base class for 1-D model.
-        """
         pass
 
     def __call__(self, x):
@@ -42,14 +42,14 @@ class Model1D:
 
 
 class Gaussian1D(Model1D):
-    def __init__(self, amplitude=1., mean=0., stddev=1.):
-        """
-        One dimensional Gaussian model.
+    """
+    One dimensional Gaussian model.
 
-        :param amplitude: Amplitude.
-        :param mean: Mean.
-        :param stddev: Standard deviation.
-        """
+    :param amplitude: Amplitude.
+    :param mean: Mean.
+    :param stddev: Standard deviation.
+    """
+    def __init__(self, amplitude=1., mean=0., stddev=1.):
         self.amplitude = amplitude
         self.mean = mean
         self.stddev = stddev

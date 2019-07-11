@@ -60,8 +60,7 @@ class Classifier:
         :param epochs: Integer. Number of epochs during training.
         :param batch_size: Number of samples per gradient update.
         :param reset_weights: Boolean. Set true to reset the weights of model.
-        :param class_weight: Dictionary. Weights of classes in loss function
-        during training.
+        :param class_weight: Dictionary. Weights of classes in loss function.
         :param validation_data: Numpy array of validation data.
         :param verbose: Value is 0, 1, or 2.
         """
@@ -134,8 +133,7 @@ class XRayBinaryClassifier(Classifier):
         :param epochs: Integer. Number of epochs during training.
         :param batch_size: Number of samples per gradient update.
         :param reset_weights: Boolean. Set true to reset the weights of model.
-        :param class_weight: Dictionary. Weights of classes in loss function
-        during training.
+        :param class_weight: Dictionary. Weights of classes in loss function during training.
         :param validation_data: Numpy array of validation data.
         :param verbose: Value is 0, 1, or 2.
         """
@@ -160,7 +158,7 @@ class XRayBinaryClassifier(Classifier):
 
 class AtlasVarStarClassifier(Classifier):
     """
-    Classification model for ATLAS variable stars
+    Classification model for ATLAS variable stars.
 
     :param activation: String (activation function name).
     :param input_size: Integer. Dimension of Feature Vector.
@@ -202,8 +200,7 @@ class AtlasVarStarClassifier(Classifier):
         :param epochs: Integer. Number of epochs during training.
         :param batch_size: Number of samples per gradient update.
         :param reset_weights: Boolean. Set true to reset the weights of model.
-        :param class_weight: Dictionary. Weights of classes in loss function
-        during training.
+        :param class_weight: Dictionary. Weights of classes in loss function during training.
         :param validation_data: Numpy array of validation data.
         :param verbose: Value is 0, 1, or 2.
         """
@@ -268,8 +265,7 @@ class OGLEClassifier(Classifier):
         :param epochs: Integer. Number of epochs during training.
         :param batch_size: Number of samples per gradient update.
         :param reset_weights: Boolean. Set true to reset the weights of model.
-        :param class_weight: Dictionary. Weights of classes in loss function
-        during training.
+        :param class_weight: Dictionary. Weights of classes in loss function.
         :param validation_data: Numpy array of validation data.
         :param verbose: Value is 0, 1, or 2.
         """

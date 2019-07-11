@@ -4,16 +4,16 @@ from copy import deepcopy
 
 
 class ParameterEstimation:
-    def __init__(self, x, y, model, loss_function, callback=None):
-        """
-        Base class of parameter estimation of a model using regression.
+    """
+    Base class of parameter estimation of a model using regression.
 
-        :param x: Array of input values.
-        :param y: Array of target values.
-        :param model: Model instance.
-        :param loss_function: Instance of loss function.
-        :param callback: Callback function.
-        """
+    :param x: Array of input values.
+    :param y: Array of target values.
+    :param model: Model instance.
+    :param loss_function: Instance of loss function.
+    :param callback: Callback function.
+    """
+    def __init__(self, x, y, model, loss_function, callback=None):
         self.x = x
         self.y = y
         self.init_model = deepcopy(model)
