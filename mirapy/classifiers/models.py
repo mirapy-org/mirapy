@@ -7,11 +7,11 @@ import matplotlib.pyplot as plt
 
 
 class Classifier:
+    """
+    Base class for classification models. It provides general abstract
+    methods required for applying a machine learning techniques.
+    """
     def __init__(self):
-        """
-        Base class for classification models. It provides general abstract
-        methods required for applying a machine learning techniques.
-        """
 
         self.model = None
         self.optimizer = None
@@ -96,12 +96,12 @@ class Classifier:
 
 
 class XRayBinaryClassifier(Classifier):
-    def __init__(self, activation='relu'):
-        """
-        Classification model for X-Ray Binaries.
+    """
+    Classification model for X-Ray Binaries.
 
-        :param activation: String (activation function name).
-        """
+    :param activation: String (activation function name).
+    """
+    def __init__(self, activation='relu'):
         self.activation = activation
 
         model = Sequential()
@@ -159,15 +159,14 @@ class XRayBinaryClassifier(Classifier):
 
 
 class AtlasVarStarClassifier(Classifier):
+    """
+    Classification model for ATLAS variable stars
 
+    :param activation: String (activation function name).
+    :param input_size: Integer. Dimension of Feature Vector.
+    :param num_classes: Integer. Number of Classes.
+    """
     def __init__(self, activation='relu', input_size=22, num_classes=9):
-        """
-        Classification model for ATLAS variable stars
-
-        :param activation: String (activation function name).
-        :param input_size: Integer. Dimension of Feature Vector.
-        :param num_classes: Integer. Number of Classes.
-        """
         self.activation = activation
         self.history = None
 
@@ -228,16 +227,15 @@ class AtlasVarStarClassifier(Classifier):
 
 
 class OGLEClassifier(Classifier):
+    """
+    Feature classification model for OGLE variable star
+    time-series dataset.
 
+    :param activation: String (activation function name).
+    :param input_size: Integer. Dimension of Feature Vector.
+    :param num_classes: Integer. Number of Classes.
+    """
     def __init__(self, activation='relu', input_size=50, num_classes=5):
-        """
-        Feature classification model for OGLE variable star
-        time-series dataset.
-
-        :param activation: String (activation function name).
-        :param input_size: Integer. Dimension of Feature Vector.
-        :param num_classes: Integer. Number of Classes.
-        """
         self.activation = activation
         self.history = None
 
@@ -295,19 +293,19 @@ class OGLEClassifier(Classifier):
 
 
 class HTRU1Classifier(Classifier):
+    """
+    CNN Classification of pulsars and non-pulsars data released by HTRU
+    survey as Data Release 1. The dataset has same structure as CIFAR-10
+    dataset.
+
+    :param input_dim: Set. Dimension of input data.
+    :param activation: String. Activation function name.
+    :param padding: Sting. Padding type.
+    :param dropout: Float between 0 and 1. Dropout value.
+    :param num_classes: Integer. Number of classes.
+    """
     def __init__(self, input_dim, activation='relu', padding='same',
                  dropout=0.25, num_classes=2):
-        """
-        CNN Classification of pulsars and non-pulsars data released by HTRU
-        survey as Data Release 1. The dataset has same structure as CIFAR-10
-        dataset.
-
-        :param input_dim: Set. Dimension of input data.
-        :param activation: String. Activation function name.
-        :param padding: Sting. Padding type.
-        :param dropout: Float between 0 and 1. Dropout value.
-        :param num_classes: Integer. Number of classes.
-        """
         self.input_dim = input_dim
         self.activation = activation
         self.padding = padding

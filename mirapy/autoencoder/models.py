@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 
 
 class Autoencoder:
+    """
+    Base Class for autoencoder models.
+    """
     def __init__(self):
-        """
-        Base Class for autoencoder models.
-        """
         self.model = None
         self.history = None
         self.dim = None
@@ -89,14 +89,14 @@ class Autoencoder:
 
 
 class DeNoisingAutoencoder(Autoencoder):
-    def __init__(self, img_dim, activation='relu', padding='same'):
-        """
-        De-noising Autoencoder used for the astronomical image reconstruction.
+    """
+    De-noising Autoencoder used for the astronomical image reconstruction.
 
-        :param img_dim: Set. Dimension of input and output image.
-        :param activation: String (activation function name).
-        :param padding: String (type of padding in convolution layers).
-        """
+    :param img_dim: Set. Dimension of input and output image.
+    :param activation: String (activation function name).
+    :param padding: String (type of padding in convolution layers).
+    """
+    def __init__(self, img_dim, activation='relu', padding='same'):
         self.dim = img_dim
         self.input_img = Input(shape=(*img_dim, 1))
 
