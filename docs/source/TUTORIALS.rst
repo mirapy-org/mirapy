@@ -1,7 +1,7 @@
 Tutorials
 =========
 
-We have a set of MiraPy tutorials for problem-solving in Astronomy using Deep Learning. You can find the Jupyter notebooks in our `Github repository <https://github.com/mirapy-org/tutorials>`_. Following are the short description of MiraPy applications:
+We have a set of MiraPy tutorials for problem-solving in Astronomy using Deep Learning. You can find the Jupyter notebooks in our `Github repository <https://github.com/mirapy-org/tutorials>`_. Following are the short descriptions of MiraPy applications:
 
 - **Astronomical Image Reconstruction using Autoencoder**
 
