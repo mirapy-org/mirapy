@@ -61,6 +61,8 @@ You can find the applications MiraPy in our `tutorial <https://github.com/mirapy
 Installation
 ------------
 
+Before installing Keras, please install one of its backend engines: TensorFlow, Theano, or CNTK. We recommend the TensorFlow backend. You can find Keras installation guide `here <https://keras.io/#installation>`_.
+
 You can download the package using `pip` package installer::
 
     pip install mirapy
