@@ -42,7 +42,7 @@ env:
         
         # List other runtime dependencies for the package that are available as
         # pip packages here.
-        - PIP_DEPENDENCIES='scipy==1.1.0 autograd sphinx_rtd_theme'
+        - PIP_DEPENDENCIES='scipy==1.1.0 autograd sphinx_rtd_theme codecov'
 
         # Conda packages for affiliated packages are hosted in channel
         # "astropy" while builds for astropy LTS with recent numpy versions
@@ -146,9 +146,11 @@ install:
 
 script:
    - $MAIN_CMD $SETUP_CMD
+   - coverage run setup.py test
 
 after_success:
     # If coveralls.io is set up for this package, uncomment the line below.
     # The coveragerc file may be customized as needed for your package.
     # - if [[ $SETUP_CMD == *coverage* ]]; then coveralls --rcfile='mirapy/tests/coveragerc'; fi
     - bash <(curl -s https://codecov.io/bash)
+    - codecov
