@@ -37,7 +37,7 @@ env:
         
         # List runtime dependencies for the package that are available as conda
         # packages here.
-        - CONDA_DEPENDENCIES='scipy==1.1.0 h5py matplotlib tqdm'
+        - CONDA_DEPENDENCIES='scipy==1.1.0 h5py matplotlib tqdm sklearn'
         - CONDA_DEPENDENCIES_DOC='sphinx-astropy'
         
         # List other runtime dependencies for the package that are available as
