@@ -3,7 +3,6 @@ from mirapy import utils
 import pytest
 
 
-
 def test_get_psf_airy():
     a = utils.get_psf_airy(1, 1)
     b = np.array([[1.]])
