@@ -1,3 +1,5 @@
 ignore:
   - "mirapy/data/load_dataset.py"
   - "_astropy_init.py"
+  - "ah_bootstrap.py"
+  - "setup.py"
