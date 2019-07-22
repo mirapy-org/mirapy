@@ -4,3 +4,4 @@ numpy>=1.11.0
 scipy>=0.18.0
 matplotlib>=1.3
 autograd
+nbsphinx

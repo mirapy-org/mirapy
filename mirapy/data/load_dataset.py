@@ -5,13 +5,20 @@ from tqdm import tqdm
 import cv2
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from keras.utils.np_utils import to_categorical
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+from mirapy.utils import unpickle
 
 
 def load_messier_catalog_images(path, img_size=None, disable_tqdm=False):
-    # TODO: Allow downloading data from github repo
+    """
+    Data loader for Messier catalog images. The images are available
+    in `messier-catalog-images` repository of MiraPy organisation.
+
+    :param path: String. Directory path.
+    :param img_size: Final dimensions of the image.
+    :param disable_tqdm: Boolean. Set True to disable progress bar.
+    :return: Array of images.
+    """
     images = []
     for filename in tqdm(os.listdir(path), disable=disable_tqdm):
         filepath = os.path.join(path, filename)
@@ -25,13 +32,29 @@ def load_messier_catalog_images(path, img_size=None, disable_tqdm=False):
 
 
 def prepare_messier_catalog_images(images, psf, sigma):
+    """
+    Function to apply convolution and add noise from poisson distribution on
+    an array of images.
+
+    :param images: Array of images.
+    :param psf: Point Spread Function (PSF).
+    :param sigma: Float. VStandard deviation.
+    :return: Original image arrays and convolved image arrays.
+    """
     images = np.array(images).astype('float32') / 255.
     x_conv2d = [convolve2d(I, psf, 'same') for I in images]
     x_conv2d_noisy = [I + sigma * np.random.poisson(I) for I in x_conv2d]
     return images, x_conv2d_noisy
 
 
-def load_xray_binary_data(path, test_split, standard_scaler=True):
+def load_xray_binary_data(path, standard_scaler=True):
+    """
+    Loads X Ray Binary dataset from directory.
+
+    :param path: Path to the directory.
+    :param standard_scaler: Bool. Standardize data or not.
+    :return: Dataset and Class labels.
+    """
     asc_files = [os.path.join(dp, f)
                  for dp, dn, filenames in os.walk(path)
                  for f in filenames if os.path.splitext(f)[1] == '.asc']
@@ -57,11 +80,11 @@ def load_xray_binary_data(path, test_split, standard_scaler=True):
     for i, _ in enumerate(datapoints):
         system = datapoints[i][0]
         if system in bh_keys:
-            datapoints[i][0] = '0'
+            datapoints[i][0] = 'BH'
         elif system in pulsar_keys:
-            datapoints[i][0] = '1'
+            datapoints[i][0] = 'P'
         elif system in nonpulsar_keys:
-            datapoints[i][0] = '2'
+            datapoints[i][0] = 'NP'
 
     rawdf = pd.DataFrame(datapoints)
     rawdf.columns = ['class', 'date', 'intensity', 'c1', 'c2']
@@ -77,15 +100,18 @@ def load_xray_binary_data(path, test_split, standard_scaler=True):
     x = df.drop('class', axis=1).values
     y = df['class'].values
 
-    x_train, x_test, y_train, y_test = \
-        train_test_split(x, y, test_size=test_split, random_state=42)
-
-    y_train = to_categorical(y_train)
-    return x_train, y_train, x_test, y_test
+    return x, y
 
 
-def load_atlas_star_data(path, test_split, standard_scaler=True,
-                         feat_list=None):
+def load_atlas_star_data(path, standard_scaler=True, feat_list=None):
+    """
+    Loads ATLAS variable star dataset from directory.
+
+    :param path: Path to the directory.
+    :param standard_scaler: Bool. Standardize data or not.
+    :param feat_list: List of features to include in dataset.
+    :return: Dataset and Class labels.
+    """
     df = pd.read_csv(path)
     y = df['CLASS']
 
@@ -119,16 +145,68 @@ def load_atlas_star_data(path, test_split, standard_scaler=True,
         sc = StandardScaler()
         x = sc.fit_transform(x)
 
-    x_train, x_test, y_train, y_test = \
-        train_test_split(x, y, test_size=test_split, random_state=42)
+    return x, y
 
-    label_encoder = LabelEncoder()
-    integer_encoded = label_encoder.fit_transform(y_train)
 
-    onehot_encoder = OneHotEncoder(sparse=False)
-    integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)
-    onehot_encoded = onehot_encoder.fit_transform(integer_encoded)
+# handle class inequality
+def load_ogle_dataset(path, classes, time_len=50, pad=False):
+    """
+    Loads OGLE variable star time series data from directory.
 
-    y_train = onehot_encoded
+    :param path: Path to the directory.
+    :param classes: Classes to include in dataset.
+    :param time_len: Length of time series data.
+    :param pad: Bool. Pad zeroes or not.
+    :return: Dataset and Class labels.
+    """
+    mag, y = [], []
+    for class_ in classes:
+        folder = path + '/' + class_ + '/I'
+        for file in os.listdir(folder):
+            num_lines = sum(1 for line in open(folder + '/' + file))
+            mag_i, j = [0 for i in range(time_len)], 0
+
+            if not pad and num_lines < time_len:
+                continue
+            for line in open(folder + '/' + file):
+                try:
+                    _, b, _ = line.split(' ')
+                except Exception:
+                    break
+                mag_i[j] = float(b)
+                j += 1
+                if j is time_len or j is num_lines:
+                    mag.append(np.array(mag_i))
+                    y.append(class_)
+                    break
+
+    mag = np.array(mag)
+    mag = mag.reshape(mag.shape[0], mag.shape[1], 1)
+    return mag, y
+
+
+def load_htru1_data(data_dir='htru1-batches-py'):
+    x_train = None
+    y_train = []
+
+    for i in range(1, 6):
+        x_train_dict = unpickle(data_dir + "/data_batch_{}".format(i))
+        if i == 1:
+            x_train = x_train_dict[b'data']
+        else:
+            x_train = np.vstack((x_train, x_train_dict[b'data']))
+        y_train += x_train_dict[b'labels']
+
+    x_train = x_train.reshape((len(x_train), 3, 32, 32))
+    x_train = np.rollaxis(x_train, 1, 4)
+    y_train = np.array(y_train)
+
+    x_test_dict = unpickle(data_dir + "/test_batch")
+    x_test = x_test_dict[b'data']
+    y_test = x_test_dict[b'labels']
+
+    x_test = np.array(x_test).reshape((len(x_test), 3, 32, 32))
+    x_test = np.rollaxis(x_test, 1, 4)
+    y_test = np.array(y_test)
 
     return x_train, y_train, x_test, y_test
