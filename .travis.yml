@@ -37,12 +37,12 @@ env:
         
         # List runtime dependencies for the package that are available as conda
         # packages here.
-        - CONDA_DEPENDENCIES='scipy h5py matplotlib'
+        - CONDA_DEPENDENCIES='scipy==1.1.0 h5py matplotlib'
         - CONDA_DEPENDENCIES_DOC='sphinx-astropy'
         
         # List other runtime dependencies for the package that are available as
         # pip packages here.
-        - PIP_DEPENDENCIES='scipy autograd sphinx_rtd_theme'
+        - PIP_DEPENDENCIES='scipy==1.1.0 autograd sphinx_rtd_theme'
 
         # Conda packages for affiliated packages are hosted in channel
         # "astropy" while builds for astropy LTS with recent numpy versions
