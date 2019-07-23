@@ -42,7 +42,7 @@ env:
         
         # List other runtime dependencies for the package that are available as
         # pip packages here.
-        - PIP_DEPENDENCIES='scipy==1.1.0 autograd sphinx_rtd_theme codecov'
+        - PIP_DEPENDENCIES='scipy==1.1.0 autograd sphinx_rtd_theme coveralls'
 
         # Conda packages for affiliated packages are hosted in channel
         # "astropy" while builds for astropy LTS with recent numpy versions
@@ -145,7 +145,7 @@ install:
     # other dependencies.
 
 script:
-   - $MAIN_CMD $SETUP_CMD --coverage
+   - $MAIN_CMD $SETUP_CMD
 
 after_success:
     # If coveralls.io is set up for this package, uncomment the line below.
