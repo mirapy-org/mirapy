@@ -42,7 +42,7 @@ env:
         
         # List other runtime dependencies for the package that are available as
         # pip packages here.
-        - PIP_DEPENDENCIES='scipy==1.1.0 autograd sphinx_rtd_theme coveralls'
+        - PIP_DEPENDENCIES='scipy==1.1.0 autograd opencv-python sphinx_rtd_theme coveralls'
 
         # Conda packages for affiliated packages are hosted in channel
         # "astropy" while builds for astropy LTS with recent numpy versions
