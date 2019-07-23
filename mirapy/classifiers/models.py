@@ -108,7 +108,7 @@ class XRayBinaryClassifier(Classifier):
         model.add(Dense(32, input_shape=(3,), activation=self.activation))
         model.add(Dense(32, activation=self.activation))
         model.add(Dense(16, activation=self.activation))
-        model.add(Dense(3, activation='softmax'))
+        model.add(Dense(1, activation='softmax'))
         self.model = model
 
     def compile(self, optimizer=Adam(lr=0.0001, decay=1e-6),
