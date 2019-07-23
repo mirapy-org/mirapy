@@ -1,7 +1,7 @@
 import os
 import pytest
 import numpy as np
-import scipy.misc
+import cv2
 from mirapy.utils import get_psf_airy
 from mirapy.data import load_dataset
 
@@ -26,7 +26,7 @@ def test_messier_catalog_images():
     img = np.zeros([100,100,3],dtype=np.uint8)
     
     os.mkdir(path)
-    scipy.misc.imsave(path+filename, img)
+    cv2.imwrite(path+filename, img)
 
     imgs = load_dataset.load_messier_catalog_images(path)
 
