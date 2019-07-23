@@ -32,8 +32,7 @@ def test_unpickle():
     with open(filename, 'wb') as f:
         pickle.dump(a, f)
 
-    with open(filename, 'rb') as f:
-        b = pickle.load(f)
+    b = utils.unpickle(filename)
     
     assert (a == b).all()
 
