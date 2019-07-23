@@ -1,5 +1,7 @@
+import os
 import numpy as np
 import pickle
+from keras.preprocessing.image import ImageDataGenerator
 from mirapy import utils
 import pytest
 
@@ -16,9 +18,15 @@ def test_psnr():
     assert psnr >= 0 and psnr <= 100
 
 def test_image_augmentation():
-    a = np.array([])
-    b = utils.image_augmentation(a, None, 10)
-    assert (a == b).all()
+    a = np.array([np.random.rand(128, 128)])
+    datagen = ImageDataGenerator(rotation_range=40,
+                                width_shift_range=0.2,
+                                height_shift_range=0.2,
+                                zoom_range=0.2,
+                                horizontal_flip=True)
+    b = utils.image_augmentation(a, datagen, 10)
+    print(type(b))
+    assert type(a) == type(b)
 
 def test_append_one_to_shape():
     a = np.array([[1, 2], [3, 4]])
@@ -33,6 +41,7 @@ def test_unpickle():
         pickle.dump(a, f)
 
     b = utils.unpickle(filename)
+    os.remove(filename)
     
     assert (a == b).all()
 
