@@ -1,6 +1,10 @@
 MiraPy: Python Package for Deep Learning in Astronomy
 --------------------------------------------------------
 
+.. image:: https://img.shields.io/badge/Powered%20by-Keras-red?style=flat-square
+    :target: http://keras.io
+    :alt: Powered by Keras Badge
+
 .. image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat-square
     :target: http://www.astropy.org
     :alt: Powered by Astropy Badge
@@ -17,7 +21,7 @@ MiraPy: Python Package for Deep Learning in Astronomy
     :target: https://coveralls.io/github/mirapy-org/mirapy
     :alt: Coveralls
 
-.. image:: https://img.shields.io/badge/chat-on%20Slack-E51670.svg?style=flat-square
+.. image:: https://img.shields.io/badge/chat%20on-Slack-E51670.svg?style=flat-square
     :target: https://join.slack.com/t/mirapy/shared_invite/enQtNjEyNDQwNTI2NDY3LTE3ZmI3M2EyMjdkZWU4NTE2NjkxZjdhYWE4ZjUyODY0NzllNzRlMzZhNThhNWRiMjk4MjNhYWQ3NjA3YjJiNGY
     :alt: Slack
 
