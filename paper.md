@@ -36,12 +36,12 @@ MiraPy can be used for problem solving using ML techniques and will continue to 
 
 Following are the experiments that you can perform right now:
 
-- Classification of X-Ray Binaries using neural network
+- Classification of X-Ray Binaries using neural network [@Gopalan_2015]
 - Astronomical Image Reconstruction using Autoencoder
-- Classification of the first catalog of variable stars by ATLAS
-- HTRU1 Pulsar Dataset Image Classification using Convolutional Neural Network
-- OGLE Catalogue Variable Star Classification using Recurrent Neural Network (RNN)
-- 2D and 3D visualization of feature sets using Principal Component Analysis (PCA)
+- Classification of the first catalog of variable stars by ATLAS [@Heinze_2018]
+- HTRU1 Pulsar Dataset Image Classification using Convolutional Neural Network [@10.1093/mnras/stu1188]
+- OGLE Catalogue Variable Star Classification using Recurrent Neural Network (RNN) [@1810.09489]
+- 2D and 3D visualization of feature sets using Principal Component Analysis (PCA) [@Barnes_2016]
 - Curve Fitting using Autograd (basic implementation)
 
 # Acknowledgements
