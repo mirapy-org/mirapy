@@ -48,3 +48,9 @@ Following are the experiments that you can perform right now:
 MiraPy is developed by Swapnil Sharma and Akhil Singhal as their final year 'Major Technical Project' under the guidance of Dr. Arnav Bhavsar at Indian Institute of Technology, Mandi.
 
 # References
+[astropy:2018]
+[scikit-learn]
+[scikit-image]
+[scipy]
+[oliphant2006guide]
+[Hunter:2007]
