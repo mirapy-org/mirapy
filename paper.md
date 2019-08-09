@@ -25,7 +25,7 @@ bibliography: paper.bib
 
 # Summary
 
-MiraPy is a Python package for Deep Learning in Astronomy. It is built using
+MiraPy is a Python package[astropy:2018] [scikit-learn] [scikit-image] [scipy] [oliphant2006guide] [Hunter:2007] for Deep Learning in Astronomy. It is built using
 Keras [@chollet2015keras] for developing ML models to run on CPU and GPU seamlessly. The
 aim is to make applying machine learning techniques on astronomical data easy
 for astronomers, researchers and students.
@@ -48,9 +48,3 @@ Following are the experiments that you can perform right now:
 MiraPy is developed by Swapnil Sharma and Akhil Singhal as their final year 'Major Technical Project' under the guidance of Dr. Arnav Bhavsar at Indian Institute of Technology, Mandi.
 
 # References
-[astropy:2018]
-[scikit-learn]
-[scikit-image]
-[scipy]
-[oliphant2006guide]
-[Hunter:2007]
